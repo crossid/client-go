@@ -107,7 +107,7 @@ func NewConfiguration() *Configuration {
 		Servers:          ServerConfigurations{
 			{
 				URL: "http://{tenant}.local.crossid.io:{port}/api/v1",
-				Description: "Development server",
+				Description: "Development",
 				Variables: map[string]ServerVariable{
 					"port": ServerVariable{
 						Description: "No description provided",

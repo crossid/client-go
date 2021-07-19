@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **IdTokenLifespan** | Pointer to **int64** |  | [optional] 
 **Meta** | Pointer to [**AppMeta**](AppMeta.md) |  | [optional] 
+**RedirectAfterLogoutUri** | Pointer to **interface{}** |  | [optional] 
 **RefreshTokenLifespan** | Pointer to **int64** |  | [optional] 
 **ScopeStrategy** | Pointer to **string** |  | [optional] 
 **SubjectIdentifierAlgorithmSalt** | Pointer to **string** |  | [optional] 
@@ -367,6 +368,41 @@ SetMeta sets Meta field to given value.
 
 HasMeta returns a boolean if a field has been set.
 
+### GetRedirectAfterLogoutUri
+
+`func (o *OAuth2AuthServer) GetRedirectAfterLogoutUri() interface{}`
+
+GetRedirectAfterLogoutUri returns the RedirectAfterLogoutUri field if non-nil, zero value otherwise.
+
+### GetRedirectAfterLogoutUriOk
+
+`func (o *OAuth2AuthServer) GetRedirectAfterLogoutUriOk() (*interface{}, bool)`
+
+GetRedirectAfterLogoutUriOk returns a tuple with the RedirectAfterLogoutUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRedirectAfterLogoutUri
+
+`func (o *OAuth2AuthServer) SetRedirectAfterLogoutUri(v interface{})`
+
+SetRedirectAfterLogoutUri sets RedirectAfterLogoutUri field to given value.
+
+### HasRedirectAfterLogoutUri
+
+`func (o *OAuth2AuthServer) HasRedirectAfterLogoutUri() bool`
+
+HasRedirectAfterLogoutUri returns a boolean if a field has been set.
+
+### SetRedirectAfterLogoutUriNil
+
+`func (o *OAuth2AuthServer) SetRedirectAfterLogoutUriNil(b bool)`
+
+ SetRedirectAfterLogoutUriNil sets the value for RedirectAfterLogoutUri to be an explicit nil
+
+### UnsetRedirectAfterLogoutUri
+`func (o *OAuth2AuthServer) UnsetRedirectAfterLogoutUri()`
+
+UnsetRedirectAfterLogoutUri ensures that no value is present for RedirectAfterLogoutUri, not even an explicit nil
 ### GetRefreshTokenLifespan
 
 `func (o *OAuth2AuthServer) GetRefreshTokenLifespan() int64`

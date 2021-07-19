@@ -18,7 +18,7 @@ externalDocs:
   description: Find out more about CrossID
   url: https://www.crossid.io/developer
 servers:
-- description: Development server
+- description: Development
   url: http://{tenant}.local.crossid.io:{port}/api/v1
   variables:
     port:
@@ -29,46 +29,48 @@ servers:
 security:
 - bearerAuth: []
 tags:
+- description: Resource Types Endpoints
+  name: resourceTypes
+- description: rules Endpoints
+  name: rules
+- description: Filters Endpoints
+  name: filters
+- description: Insight discovery and resolution Endpoints
+  name: insights
+- description: Jobs Endpoints
+  name: jobs
+- description: Resource References Endpoints
+  name: refs
 - description: Sessions Endpoints
   name: sessions
 - description: Login Endpoints
   name: login
 - description: Registration Endpoints
   name: register
-- description: Filters Endpoints
-  name: filters
-- description: Flows and Tasks endpoints
-  name: flows
-- description: Jobs Endpoints
-  name: jobs
+- description: Registration Endpoints
+  name: recover
+- description: Mappers Endpoints
+  name: mappers
+- description: Portal Endpoints
+  name: portal
 - description: Secrets Endpoints
   name: secrets
 - description: Changes Endpoints
   name: changes
-- description: Schemas Endpoints
-  name: schemas
-- description: Portal Endpoints
-  name: portal
-- description: Resources Endpoints
-  name: resources
-- description: rules Endpoints
-  name: rules
-- description: Audit Endpoints
-  name: audit
-- description: Data mining and role clustering Endpoints
-  name: mining
-- description: Insight discovery and resolution Endpoints
-  name: insights
-- description: Applications Endpoints
-  name: apps
 - description: Node Health Endpoints
   name: health
-- description: Mappers Endpoints
-  name: mappers
-- description: Resource References Endpoints
-  name: refs
-- description: Resource Types Endpoints
-  name: resourceTypes
+- description: Data mining and role clustering Endpoints
+  name: mining
+- description: Schemas Endpoints
+  name: schemas
+- description: Resources Endpoints
+  name: resources
+- description: Applications Endpoints
+  name: apps
+- description: Audit Endpoints
+  name: audit
+- description: Flows and Tasks endpoints
+  name: flows
 paths:
   /apps/:
     get:
@@ -1049,6 +1051,143 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: An internal error has occured.
       summary: Submit a login flow.
+      tags:
+      - forms
+      x-order: 40
+  /auth/flows/recover/{id}:
+    get:
+      operationId: getRecoveryFlow
+      parameters:
+      - description: The id of the flow to retrieve
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CrossFlow'
+          description: Expected response to a valid request
+        "400":
+          content:
+            application/json:
+              example:
+                code: "400"
+                message: 'Bad Request: Invalid argument (invalid request payload).'
+                status: Bad Request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The submitted request is invalid.
+        "404":
+          content:
+            application/json:
+              example:
+                code: "404"
+                message: the requested resource could not be found.
+                status: Not Found
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found.
+        "500":
+          content:
+            application/json:
+              example:
+                code: "500"
+                message: an internal error has occurred.
+                status: Internal Error
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: An internal error has occured.
+      summary: Info for a specific recovery flow.
+      tags:
+      - recover
+  /auth/flows/recover/{id}/.submit:
+    post:
+      operationId: submitRecoveryFlow
+      parameters:
+      - description: The id of the recovery flow to submit.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/SingleCrossFlow'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CrossFlow'
+          description: The form state after submission.
+        "400":
+          content:
+            application/json:
+              example:
+                code: "400"
+                message: 'Bad Request: Invalid argument (invalid request payload).'
+                status: Bad Request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The submitted request is invalid.
+        "401":
+          content:
+            application/json:
+              example:
+                code: "401"
+                message: client is not authenticated.
+                status: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Client is not authenticated.
+        "403":
+          content:
+            application/json:
+              example:
+                code: "403"
+                message: the request action is forbidden.
+                status: Forbidden
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Client is not authorized to perform the requested action.
+        "404":
+          content:
+            application/json:
+              example:
+                code: "404"
+                message: the requested resource could not be found.
+                status: Not Found
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found.
+        "412":
+          content:
+            application/json:
+              example:
+                code: "400"
+                message: 'Bad Request: Invalid argument (invalid request payload).'
+                status: Bad Request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The submitted request is invalid.
+        "500":
+          content:
+            application/json:
+              example:
+                code: "500"
+                message: an internal error has occurred.
+                status: Internal Error
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: An internal error has occured.
+      summary: Submit a recovery flow.
       tags:
       - forms
       x-order: 40
@@ -5539,6 +5678,182 @@ paths:
               schema:
                 $ref: '#/components/schemas/OAuth2RequestHandlerResponse'
           description: Login request was rejected successfuly
+        "400":
+          content:
+            application/json:
+              example:
+                code: "400"
+                message: 'Bad Request: Invalid argument (invalid request payload).'
+                status: Bad Request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The submitted request is invalid.
+        "401":
+          content:
+            application/json:
+              example:
+                code: "401"
+                message: client is not authenticated.
+                status: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Client is not authenticated.
+        "403":
+          content:
+            application/json:
+              example:
+                code: "403"
+                message: the request action is forbidden.
+                status: Forbidden
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Client is not authorized to perform the requested action.
+        "500":
+          content:
+            application/json:
+              example:
+                code: "500"
+                message: an internal error has occurred.
+                status: Internal Error
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: An internal error has occured.
+      tags:
+      - oauth2
+  /oauth2/auth/requests/logout:
+    get:
+      operationId: getLogoutRequest
+      parameters:
+      - explode: true
+        in: query
+        name: challenge
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuth2LogoutRequest'
+          description: Get a lgout request by sso challenge
+        "400":
+          content:
+            application/json:
+              example:
+                code: "400"
+                message: 'Bad Request: Invalid argument (invalid request payload).'
+                status: Bad Request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The submitted request is invalid.
+        "401":
+          content:
+            application/json:
+              example:
+                code: "401"
+                message: client is not authenticated.
+                status: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Client is not authenticated.
+        "403":
+          content:
+            application/json:
+              example:
+                code: "403"
+                message: the request action is forbidden.
+                status: Forbidden
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Client is not authorized to perform the requested action.
+        "500":
+          content:
+            application/json:
+              example:
+                code: "500"
+                message: an internal error has occurred.
+                status: Internal Error
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: An internal error has occured.
+      tags:
+      - oauth2
+  /oauth2/auth/requests/logout/accept:
+    put:
+      operationId: acceptLogoutRequest
+      parameters:
+      - explode: true
+        in: query
+        name: challenge
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuth2RequestHandlerResponse'
+          description: Login request was approved successfuly
+        "400":
+          content:
+            application/json:
+              example:
+                code: "400"
+                message: 'Bad Request: Invalid argument (invalid request payload).'
+                status: Bad Request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The submitted request is invalid.
+        "401":
+          content:
+            application/json:
+              example:
+                code: "401"
+                message: client is not authenticated.
+                status: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Client is not authenticated.
+        "403":
+          content:
+            application/json:
+              example:
+                code: "403"
+                message: the request action is forbidden.
+                status: Forbidden
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Client is not authorized to perform the requested action.
+        "500":
+          content:
+            application/json:
+              example:
+                code: "500"
+                message: an internal error has occurred.
+                status: Internal Error
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: An internal error has occured.
+      tags:
+      - oauth2
+  /oauth2/auth/requests/logout/reject:
+    put:
+      operationId: rejectLogoutRequest
+      parameters:
+      - explode: true
+        in: query
+        name: challenge
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "204":
+          description: Logout request was rejected successfuly
         "400":
           content:
             application/json:
@@ -10347,6 +10662,7 @@ components:
           type: integer
         meta:
           $ref: '#/components/schemas/App_meta'
+        redirectAfterLogoutUri: {}
         refreshTokenLifespan:
           format: int64
           type: integer
@@ -10555,6 +10871,25 @@ components:
           type: string
         skip:
           type: boolean
+        subject:
+          type: string
+      type: object
+    OAuth2LogoutRequest:
+      example:
+        subject: subject
+        challenge: challenge
+        rp_initiated: true
+        session_id: session_id
+        request_url: request_url
+      properties:
+        challenge:
+          type: string
+        request_url:
+          type: string
+        rp_initiated:
+          type: boolean
+        session_id:
+          type: string
         subject:
           type: string
       type: object

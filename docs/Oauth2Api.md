@@ -6,12 +6,15 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AcceptConsentRequest**](Oauth2Api.md#AcceptConsentRequest) | **Put** /oauth2/auth/requests/consent/accept | 
 [**AcceptLoginRequest**](Oauth2Api.md#AcceptLoginRequest) | **Put** /oauth2/auth/requests/login/accept | 
+[**AcceptLogoutRequest**](Oauth2Api.md#AcceptLogoutRequest) | **Put** /oauth2/auth/requests/logout/accept | 
 [**GetConsentRequest**](Oauth2Api.md#GetConsentRequest) | **Get** /oauth2/auth/requests/consent | 
 [**GetLoginRequest**](Oauth2Api.md#GetLoginRequest) | **Get** /oauth2/auth/requests/login | 
+[**GetLogoutRequest**](Oauth2Api.md#GetLogoutRequest) | **Get** /oauth2/auth/requests/logout | 
 [**ListOAUTH2AuthorizationServers**](Oauth2Api.md#ListOAUTH2AuthorizationServers) | **Get** /oauth2/auhtorization-servers/ | List OAUTH 2.0 Authorization Servers.
 [**ListOAUTH2Clients**](Oauth2Api.md#ListOAUTH2Clients) | **Get** /oauth2/clients/ | List OAUTH 2.0 Clients.
 [**RejectConsentRequest**](Oauth2Api.md#RejectConsentRequest) | **Put** /oauth2/auth/requests/consent/reject | 
 [**RejectLoginRequest**](Oauth2Api.md#RejectLoginRequest) | **Put** /oauth2/auth/requests/login/reject | 
+[**RejectLogoutRequest**](Oauth2Api.md#RejectLogoutRequest) | **Put** /oauth2/auth/requests/logout/reject | 
 
 
 
@@ -147,6 +150,70 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## AcceptLogoutRequest
+
+> OAuth2RequestHandlerResponse AcceptLogoutRequest(ctx).Challenge(challenge).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    challenge := "challenge_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.Oauth2Api.AcceptLogoutRequest(context.Background()).Challenge(challenge).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `Oauth2Api.AcceptLogoutRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AcceptLogoutRequest`: OAuth2RequestHandlerResponse
+    fmt.Fprintf(os.Stdout, "Response from `Oauth2Api.AcceptLogoutRequest`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAcceptLogoutRequestRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **challenge** | **string** |  | 
+
+### Return type
+
+[**OAuth2RequestHandlerResponse**](OAuth2RequestHandlerResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetConsentRequest
 
 > OAuth2ConsentRequest GetConsentRequest(ctx).Challenge(challenge).Execute()
@@ -260,6 +327,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OAuth2LoginRequest**](OAuth2LoginRequest.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetLogoutRequest
+
+> OAuth2LogoutRequest GetLogoutRequest(ctx).Challenge(challenge).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    challenge := "challenge_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.Oauth2Api.GetLogoutRequest(context.Background()).Challenge(challenge).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `Oauth2Api.GetLogoutRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetLogoutRequest`: OAuth2LogoutRequest
+    fmt.Fprintf(os.Stdout, "Response from `Oauth2Api.GetLogoutRequest`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetLogoutRequestRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **challenge** | **string** |  | 
+
+### Return type
+
+[**OAuth2LogoutRequest**](OAuth2LogoutRequest.md)
 
 ### Authorization
 
@@ -556,6 +687,68 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RejectLogoutRequest
+
+> RejectLogoutRequest(ctx).Challenge(challenge).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    challenge := "challenge_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.Oauth2Api.RejectLogoutRequest(context.Background()).Challenge(challenge).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `Oauth2Api.RejectLogoutRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRejectLogoutRequestRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **challenge** | **string** |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
