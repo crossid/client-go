@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 ## AcceptLogoutRequest
 
-> OAuth2RequestHandlerResponse AcceptLogoutRequest(ctx).Challenge(challenge).Execute()
+> OAuth2RequestHandlerResponse AcceptLogoutRequest(ctx).Challenge(challenge).AuthServerId(authServerId).Execute()
 
 
 
@@ -170,10 +170,11 @@ import (
 
 func main() {
     challenge := "challenge_example" // string |  (optional)
+    authServerId := "authServerId_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Oauth2Api.AcceptLogoutRequest(context.Background()).Challenge(challenge).Execute()
+    resp, r, err := api_client.Oauth2Api.AcceptLogoutRequest(context.Background()).Challenge(challenge).AuthServerId(authServerId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `Oauth2Api.AcceptLogoutRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -195,6 +196,7 @@ Other parameters are passed through a pointer to a apiAcceptLogoutRequestRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **challenge** | **string** |  | 
+ **authServerId** | **string** |  | 
 
 ### Return type
 

@@ -29,18 +29,18 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- description: Resource Types Endpoints
-  name: resourceTypes
-- description: rules Endpoints
-  name: rules
 - description: Filters Endpoints
   name: filters
-- description: Insight discovery and resolution Endpoints
-  name: insights
 - description: Jobs Endpoints
   name: jobs
+- description: Mappers Endpoints
+  name: mappers
+- description: Portal Endpoints
+  name: portal
 - description: Resource References Endpoints
   name: refs
+- description: Audit Endpoints
+  name: audit
 - description: Sessions Endpoints
   name: sessions
 - description: Login Endpoints
@@ -49,28 +49,28 @@ tags:
   name: register
 - description: Registration Endpoints
   name: recover
-- description: Mappers Endpoints
-  name: mappers
-- description: Portal Endpoints
-  name: portal
+- description: Insight discovery and resolution Endpoints
+  name: insights
 - description: Secrets Endpoints
   name: secrets
+- description: Applications Endpoints
+  name: apps
+- description: Flows and Tasks endpoints
+  name: flows
+- description: Data mining and role clustering Endpoints
+  name: mining
+- description: Resource Types Endpoints
+  name: resourceTypes
+- description: rules Endpoints
+  name: rules
 - description: Changes Endpoints
   name: changes
 - description: Node Health Endpoints
   name: health
-- description: Data mining and role clustering Endpoints
-  name: mining
 - description: Schemas Endpoints
   name: schemas
 - description: Resources Endpoints
   name: resources
-- description: Applications Endpoints
-  name: apps
-- description: Audit Endpoints
-  name: audit
-- description: Flows and Tasks endpoints
-  name: flows
 paths:
   /apps/:
     get:
@@ -5791,6 +5791,13 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: authServerId
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -10662,7 +10669,7 @@ components:
           type: integer
         meta:
           $ref: '#/components/schemas/App_meta'
-        redirectAfterLogoutUri: {}
+        redirectAfterLogoutURL: {}
         refreshTokenLifespan:
           format: int64
           type: integer
@@ -10881,7 +10888,10 @@ components:
         rp_initiated: true
         session_id: session_id
         request_url: request_url
+        auth_server_id: auth_server_id
       properties:
+        auth_server_id:
+          type: string
         challenge:
           type: string
         request_url:

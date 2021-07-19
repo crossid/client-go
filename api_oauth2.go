@@ -349,10 +349,15 @@ type ApiAcceptLogoutRequestRequest struct {
 	ctx _context.Context
 	ApiService *Oauth2ApiService
 	challenge *string
+	authServerId *string
 }
 
 func (r ApiAcceptLogoutRequestRequest) Challenge(challenge string) ApiAcceptLogoutRequestRequest {
 	r.challenge = &challenge
+	return r
+}
+func (r ApiAcceptLogoutRequestRequest) AuthServerId(authServerId string) ApiAcceptLogoutRequestRequest {
+	r.authServerId = &authServerId
 	return r
 }
 
@@ -399,6 +404,9 @@ func (a *Oauth2ApiService) AcceptLogoutRequestExecute(r ApiAcceptLogoutRequestRe
 
 	if r.challenge != nil {
 		localVarQueryParams.Add("challenge", parameterToString(*r.challenge, ""))
+	}
+	if r.authServerId != nil {
+		localVarQueryParams.Add("authServerId", parameterToString(*r.authServerId, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

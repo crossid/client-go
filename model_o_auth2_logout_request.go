@@ -17,6 +17,7 @@ import (
 
 // OAuth2LogoutRequest struct for OAuth2LogoutRequest
 type OAuth2LogoutRequest struct {
+	AuthServerId *string `json:"auth_server_id,omitempty"`
 	Challenge *string `json:"challenge,omitempty"`
 	RequestUrl *string `json:"request_url,omitempty"`
 	RpInitiated *bool `json:"rp_initiated,omitempty"`
@@ -39,6 +40,38 @@ func NewOAuth2LogoutRequest() *OAuth2LogoutRequest {
 func NewOAuth2LogoutRequestWithDefaults() *OAuth2LogoutRequest {
 	this := OAuth2LogoutRequest{}
 	return &this
+}
+
+// GetAuthServerId returns the AuthServerId field value if set, zero value otherwise.
+func (o *OAuth2LogoutRequest) GetAuthServerId() string {
+	if o == nil || o.AuthServerId == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuthServerId
+}
+
+// GetAuthServerIdOk returns a tuple with the AuthServerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuth2LogoutRequest) GetAuthServerIdOk() (*string, bool) {
+	if o == nil || o.AuthServerId == nil {
+		return nil, false
+	}
+	return o.AuthServerId, true
+}
+
+// HasAuthServerId returns a boolean if a field has been set.
+func (o *OAuth2LogoutRequest) HasAuthServerId() bool {
+	if o != nil && o.AuthServerId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthServerId gets a reference to the given string and assigns it to the AuthServerId field.
+func (o *OAuth2LogoutRequest) SetAuthServerId(v string) {
+	o.AuthServerId = &v
 }
 
 // GetChallenge returns the Challenge field value if set, zero value otherwise.
@@ -203,6 +236,9 @@ func (o *OAuth2LogoutRequest) SetSubject(v string) {
 
 func (o OAuth2LogoutRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AuthServerId != nil {
+		toSerialize["auth_server_id"] = o.AuthServerId
+	}
 	if o.Challenge != nil {
 		toSerialize["challenge"] = o.Challenge
 	}

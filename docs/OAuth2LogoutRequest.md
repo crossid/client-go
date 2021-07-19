@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AuthServerId** | Pointer to **string** |  | [optional] 
 **Challenge** | Pointer to **string** |  | [optional] 
 **RequestUrl** | Pointer to **string** |  | [optional] 
 **RpInitiated** | Pointer to **bool** |  | [optional] 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewOAuth2LogoutRequestWithDefaults instantiates a new OAuth2LogoutRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAuthServerId
+
+`func (o *OAuth2LogoutRequest) GetAuthServerId() string`
+
+GetAuthServerId returns the AuthServerId field if non-nil, zero value otherwise.
+
+### GetAuthServerIdOk
+
+`func (o *OAuth2LogoutRequest) GetAuthServerIdOk() (*string, bool)`
+
+GetAuthServerIdOk returns a tuple with the AuthServerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthServerId
+
+`func (o *OAuth2LogoutRequest) SetAuthServerId(v string)`
+
+SetAuthServerId sets AuthServerId field to given value.
+
+### HasAuthServerId
+
+`func (o *OAuth2LogoutRequest) HasAuthServerId() bool`
+
+HasAuthServerId returns a boolean if a field has been set.
 
 ### GetChallenge
 
