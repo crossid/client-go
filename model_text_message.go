@@ -17,8 +17,8 @@ import (
 
 // TextMessage struct for TextMessage
 type TextMessage struct {
-	Code *string `json:"code,omitempty"`
 	Context *map[string]map[string]interface{} `json:"context,omitempty"`
+	Id string `json:"id"`
 	Text string `json:"text"`
 	Type string `json:"type"`
 }
@@ -27,8 +27,9 @@ type TextMessage struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTextMessage(text string, type_ string) *TextMessage {
+func NewTextMessage(id string, text string, type_ string) *TextMessage {
 	this := TextMessage{}
+	this.Id = id
 	this.Text = text
 	this.Type = type_
 	return &this
@@ -40,38 +41,6 @@ func NewTextMessage(text string, type_ string) *TextMessage {
 func NewTextMessageWithDefaults() *TextMessage {
 	this := TextMessage{}
 	return &this
-}
-
-// GetCode returns the Code field value if set, zero value otherwise.
-func (o *TextMessage) GetCode() string {
-	if o == nil || o.Code == nil {
-		var ret string
-		return ret
-	}
-	return *o.Code
-}
-
-// GetCodeOk returns a tuple with the Code field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TextMessage) GetCodeOk() (*string, bool) {
-	if o == nil || o.Code == nil {
-		return nil, false
-	}
-	return o.Code, true
-}
-
-// HasCode returns a boolean if a field has been set.
-func (o *TextMessage) HasCode() bool {
-	if o != nil && o.Code != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCode gets a reference to the given string and assigns it to the Code field.
-func (o *TextMessage) SetCode(v string) {
-	o.Code = &v
 }
 
 // GetContext returns the Context field value if set, zero value otherwise.
@@ -104,6 +73,30 @@ func (o *TextMessage) HasContext() bool {
 // SetContext gets a reference to the given map[string]map[string]interface{} and assigns it to the Context field.
 func (o *TextMessage) SetContext(v map[string]map[string]interface{}) {
 	o.Context = &v
+}
+
+// GetId returns the Id field value
+func (o *TextMessage) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *TextMessage) GetIdOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *TextMessage) SetId(v string) {
+	o.Id = v
 }
 
 // GetText returns the Text field value
@@ -156,11 +149,11 @@ func (o *TextMessage) SetType(v string) {
 
 func (o TextMessage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Code != nil {
-		toSerialize["code"] = o.Code
-	}
 	if o.Context != nil {
 		toSerialize["context"] = o.Context
+	}
+	if true {
+		toSerialize["id"] = o.Id
 	}
 	if true {
 		toSerialize["text"] = o.Text

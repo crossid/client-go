@@ -18,7 +18,7 @@ import (
 // EventLogClient struct for EventLogClient
 type EventLogClient struct {
 	Geo *EventLogClientGeo `json:"geo,omitempty"`
-	Ip *string `json:"ip,omitempty"`
+	Ips *[]string `json:"ips,omitempty"`
 	UserAgent *EventLogClientUserAgent `json:"userAgent,omitempty"`
 }
 
@@ -71,36 +71,36 @@ func (o *EventLogClient) SetGeo(v EventLogClientGeo) {
 	o.Geo = &v
 }
 
-// GetIp returns the Ip field value if set, zero value otherwise.
-func (o *EventLogClient) GetIp() string {
-	if o == nil || o.Ip == nil {
-		var ret string
+// GetIps returns the Ips field value if set, zero value otherwise.
+func (o *EventLogClient) GetIps() []string {
+	if o == nil || o.Ips == nil {
+		var ret []string
 		return ret
 	}
-	return *o.Ip
+	return *o.Ips
 }
 
-// GetIpOk returns a tuple with the Ip field value if set, nil otherwise
+// GetIpsOk returns a tuple with the Ips field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EventLogClient) GetIpOk() (*string, bool) {
-	if o == nil || o.Ip == nil {
+func (o *EventLogClient) GetIpsOk() (*[]string, bool) {
+	if o == nil || o.Ips == nil {
 		return nil, false
 	}
-	return o.Ip, true
+	return o.Ips, true
 }
 
-// HasIp returns a boolean if a field has been set.
-func (o *EventLogClient) HasIp() bool {
-	if o != nil && o.Ip != nil {
+// HasIps returns a boolean if a field has been set.
+func (o *EventLogClient) HasIps() bool {
+	if o != nil && o.Ips != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetIp gets a reference to the given string and assigns it to the Ip field.
-func (o *EventLogClient) SetIp(v string) {
-	o.Ip = &v
+// SetIps gets a reference to the given []string and assigns it to the Ips field.
+func (o *EventLogClient) SetIps(v []string) {
+	o.Ips = &v
 }
 
 // GetUserAgent returns the UserAgent field value if set, zero value otherwise.
@@ -140,8 +140,8 @@ func (o EventLogClient) MarshalJSON() ([]byte, error) {
 	if o.Geo != nil {
 		toSerialize["geo"] = o.Geo
 	}
-	if o.Ip != nil {
-		toSerialize["ip"] = o.Ip
+	if o.Ips != nil {
+		toSerialize["ips"] = o.Ips
 	}
 	if o.UserAgent != nil {
 		toSerialize["userAgent"] = o.UserAgent

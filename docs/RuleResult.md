@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **ModelType** | Pointer to **string** |  | [optional] 
 **Op** | Pointer to **string** |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
-**Value** | Pointer to **map[string]interface{}** |  | [optional] 
+**Value** | Pointer to **interface{}** |  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasPath returns a boolean if a field has been set.
 
 ### GetValue
 
-`func (o *RuleResult) GetValue() map[string]interface{}`
+`func (o *RuleResult) GetValue() interface{}`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *RuleResult) GetValueOk() (*map[string]interface{}, bool)`
+`func (o *RuleResult) GetValueOk() (*interface{}, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *RuleResult) SetValue(v map[string]interface{})`
+`func (o *RuleResult) SetValue(v interface{})`
 
 SetValue sets Value field to given value.
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Geo** | Pointer to [**EventLogClientGeo**](EventLogClientGeo.md) |  | [optional] 
-**Ip** | Pointer to **string** |  | [optional] 
+**Ips** | Pointer to **[]string** |  | [optional] 
 **UserAgent** | Pointer to [**EventLogClientUserAgent**](EventLogClientUserAgent.md) |  | [optional] 
 
 ## Methods
@@ -52,30 +52,30 @@ SetGeo sets Geo field to given value.
 
 HasGeo returns a boolean if a field has been set.
 
-### GetIp
+### GetIps
 
-`func (o *EventLogClient) GetIp() string`
+`func (o *EventLogClient) GetIps() []string`
 
-GetIp returns the Ip field if non-nil, zero value otherwise.
+GetIps returns the Ips field if non-nil, zero value otherwise.
 
-### GetIpOk
+### GetIpsOk
 
-`func (o *EventLogClient) GetIpOk() (*string, bool)`
+`func (o *EventLogClient) GetIpsOk() (*[]string, bool)`
 
-GetIpOk returns a tuple with the Ip field if it's non-nil, zero value otherwise
+GetIpsOk returns a tuple with the Ips field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIp
+### SetIps
 
-`func (o *EventLogClient) SetIp(v string)`
+`func (o *EventLogClient) SetIps(v []string)`
 
-SetIp sets Ip field to given value.
+SetIps sets Ips field to given value.
 
-### HasIp
+### HasIps
 
-`func (o *EventLogClient) HasIp() bool`
+`func (o *EventLogClient) HasIps() bool`
 
-HasIp returns a boolean if a field has been set.
+HasIps returns a boolean if a field has been set.
 
 ### GetUserAgent
 

@@ -80,8 +80,6 @@ type APIClient struct {
 
 	PortalApi *PortalApiService
 
-	RecoverApi *RecoverApiService
-
 	RegisterApi *RegisterApiService
 
 	ResourceTypesApi *ResourceTypesApiService
@@ -128,7 +126,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MiningApi = (*MiningApiService)(&c.common)
 	c.Oauth2Api = (*Oauth2ApiService)(&c.common)
 	c.PortalApi = (*PortalApiService)(&c.common)
-	c.RecoverApi = (*RecoverApiService)(&c.common)
 	c.RegisterApi = (*RegisterApiService)(&c.common)
 	c.ResourceTypesApi = (*ResourceTypesApiService)(&c.common)
 	c.ResourcesApi = (*ResourcesApiService)(&c.common)

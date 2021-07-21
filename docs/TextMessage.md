@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | Pointer to **string** |  | [optional] 
 **Context** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
+**Id** | **string** |  | 
 **Text** | **string** |  | 
 **Type** | **string** |  | 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewTextMessage
 
-`func NewTextMessage(text string, type_ string, ) *TextMessage`
+`func NewTextMessage(id string, text string, type_ string, ) *TextMessage`
 
 NewTextMessage instantiates a new TextMessage object
 This constructor will assign default values to properties that have it defined,
@@ -27,31 +27,6 @@ will change when the set of required properties is changed
 NewTextMessageWithDefaults instantiates a new TextMessage object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCode
-
-`func (o *TextMessage) GetCode() string`
-
-GetCode returns the Code field if non-nil, zero value otherwise.
-
-### GetCodeOk
-
-`func (o *TextMessage) GetCodeOk() (*string, bool)`
-
-GetCodeOk returns a tuple with the Code field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCode
-
-`func (o *TextMessage) SetCode(v string)`
-
-SetCode sets Code field to given value.
-
-### HasCode
-
-`func (o *TextMessage) HasCode() bool`
-
-HasCode returns a boolean if a field has been set.
 
 ### GetContext
 
@@ -77,6 +52,26 @@ SetContext sets Context field to given value.
 `func (o *TextMessage) HasContext() bool`
 
 HasContext returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *TextMessage) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *TextMessage) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *TextMessage) SetId(v string)`
+
+SetId sets Id field to given value.
+
 
 ### GetText
 

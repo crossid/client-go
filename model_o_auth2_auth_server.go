@@ -30,7 +30,6 @@ type OAuth2AuthServer struct {
 	Id *string `json:"id,omitempty"`
 	IdTokenLifespan *int64 `json:"idTokenLifespan,omitempty"`
 	Meta *AppMeta `json:"meta,omitempty"`
-	RedirectAfterLogoutURL interface{} `json:"redirectAfterLogoutURL,omitempty"`
 	RefreshTokenLifespan *int64 `json:"refreshTokenLifespan,omitempty"`
 	ScopeStrategy *string `json:"scopeStrategy,omitempty"`
 	SubjectIdentifierAlgorithmSalt *string `json:"subjectIdentifierAlgorithmSalt,omitempty"`
@@ -471,39 +470,6 @@ func (o *OAuth2AuthServer) SetMeta(v AppMeta) {
 	o.Meta = &v
 }
 
-// GetRedirectAfterLogoutURL returns the RedirectAfterLogoutURL field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OAuth2AuthServer) GetRedirectAfterLogoutURL() interface{} {
-	if o == nil  {
-		var ret interface{}
-		return ret
-	}
-	return o.RedirectAfterLogoutURL
-}
-
-// GetRedirectAfterLogoutURLOk returns a tuple with the RedirectAfterLogoutURL field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OAuth2AuthServer) GetRedirectAfterLogoutURLOk() (*interface{}, bool) {
-	if o == nil || o.RedirectAfterLogoutURL == nil {
-		return nil, false
-	}
-	return &o.RedirectAfterLogoutURL, true
-}
-
-// HasRedirectAfterLogoutURL returns a boolean if a field has been set.
-func (o *OAuth2AuthServer) HasRedirectAfterLogoutURL() bool {
-	if o != nil && o.RedirectAfterLogoutURL != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRedirectAfterLogoutURL gets a reference to the given interface{} and assigns it to the RedirectAfterLogoutURL field.
-func (o *OAuth2AuthServer) SetRedirectAfterLogoutURL(v interface{}) {
-	o.RedirectAfterLogoutURL = v
-}
-
 // GetRefreshTokenLifespan returns the RefreshTokenLifespan field value if set, zero value otherwise.
 func (o *OAuth2AuthServer) GetRefreshTokenLifespan() int64 {
 	if o == nil || o.RefreshTokenLifespan == nil {
@@ -704,9 +670,6 @@ func (o OAuth2AuthServer) MarshalJSON() ([]byte, error) {
 	}
 	if o.Meta != nil {
 		toSerialize["meta"] = o.Meta
-	}
-	if o.RedirectAfterLogoutURL != nil {
-		toSerialize["redirectAfterLogoutURL"] = o.RedirectAfterLogoutURL
 	}
 	if o.RefreshTokenLifespan != nil {
 		toSerialize["refreshTokenLifespan"] = o.RefreshTokenLifespan

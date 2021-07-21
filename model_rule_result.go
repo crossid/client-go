@@ -20,7 +20,7 @@ type RuleResult struct {
 	ModelType *string `json:"modelType,omitempty"`
 	Op *string `json:"op,omitempty"`
 	Path *string `json:"path,omitempty"`
-	Value *map[string]interface{} `json:"value,omitempty"`
+	Value *interface{} `json:"value,omitempty"`
 }
 
 // NewRuleResult instantiates a new RuleResult object
@@ -137,9 +137,9 @@ func (o *RuleResult) SetPath(v string) {
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
-func (o *RuleResult) GetValue() map[string]interface{} {
+func (o *RuleResult) GetValue() interface{} {
 	if o == nil || o.Value == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 	return *o.Value
@@ -147,7 +147,7 @@ func (o *RuleResult) GetValue() map[string]interface{} {
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuleResult) GetValueOk() (*map[string]interface{}, bool) {
+func (o *RuleResult) GetValueOk() (*interface{}, bool) {
 	if o == nil || o.Value == nil {
 		return nil, false
 	}
@@ -163,8 +163,8 @@ func (o *RuleResult) HasValue() bool {
 	return false
 }
 
-// SetValue gets a reference to the given map[string]interface{} and assigns it to the Value field.
-func (o *RuleResult) SetValue(v map[string]interface{}) {
+// SetValue gets a reference to the given interface{} and assigns it to the Value field.
+func (o *RuleResult) SetValue(v interface{}) {
 	o.Value = &v
 }
 
