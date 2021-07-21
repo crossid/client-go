@@ -29,46 +29,46 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- description: Node Health Endpoints
-  name: health
+- description: Mappers Endpoints
+  name: mappers
 - description: Resource References Endpoints
   name: refs
-- description: Changes Endpoints
-  name: changes
-- description: Flows and Tasks endpoints
-  name: flows
-- description: Portal Endpoints
-  name: portal
-- description: Resources Endpoints
-  name: resources
-- description: rules Endpoints
-  name: rules
+- description: Audit Endpoints
+  name: audit
+- description: Node Health Endpoints
+  name: health
+- description: Filters Endpoints
+  name: filters
+- description: Insight discovery and resolution Endpoints
+  name: insights
+- description: Jobs Endpoints
+  name: jobs
 - description: Schemas Endpoints
   name: schemas
+- description: Portal Endpoints
+  name: portal
+- description: Applications Endpoints
+  name: apps
 - description: Sessions Endpoints
   name: sessions
 - description: Login Endpoints
   name: login
 - description: Registration Endpoints
   name: register
-- description: Filters Endpoints
-  name: filters
-- description: Data mining and role clustering Endpoints
-  name: mining
-- description: Jobs Endpoints
-  name: jobs
+- description: Resources Endpoints
+  name: resources
 - description: Resource Types Endpoints
   name: resourceTypes
-- description: Applications Endpoints
-  name: apps
-- description: Audit Endpoints
-  name: audit
-- description: Mappers Endpoints
-  name: mappers
+- description: rules Endpoints
+  name: rules
 - description: Secrets Endpoints
   name: secrets
-- description: Insight discovery and resolution Endpoints
-  name: insights
+- description: Changes Endpoints
+  name: changes
+- description: Flows and Tasks endpoints
+  name: flows
+- description: Data mining and role clustering Endpoints
+  name: mining
 paths:
   /apps/:
     get:
@@ -10786,10 +10786,10 @@ components:
         path:
           type: string
         value:
-          type: any
+          type: interface{}
       type: object
     RuleResultValue:
-      type: any
+      type: interface{}
     SCIMSchema:
       example:
         meta:
