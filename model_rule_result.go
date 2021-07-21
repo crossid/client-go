@@ -20,7 +20,7 @@ type RuleResult struct {
 	ModelType *string `json:"modelType,omitempty"`
 	Op *string `json:"op,omitempty"`
 	Path *string `json:"path,omitempty"`
-	Value *interface{} `json:"value,omitempty"`
+	Value *Any `json:"value,omitempty"`
 }
 
 // NewRuleResult instantiates a new RuleResult object
@@ -137,9 +137,9 @@ func (o *RuleResult) SetPath(v string) {
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
-func (o *RuleResult) GetValue() interface{} {
+func (o *RuleResult) GetValue() Any {
 	if o == nil || o.Value == nil {
-		var ret interface{}
+		var ret Any
 		return ret
 	}
 	return *o.Value
@@ -147,7 +147,7 @@ func (o *RuleResult) GetValue() interface{} {
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuleResult) GetValueOk() (*interface{}, bool) {
+func (o *RuleResult) GetValueOk() (*Any, bool) {
 	if o == nil || o.Value == nil {
 		return nil, false
 	}
@@ -163,8 +163,8 @@ func (o *RuleResult) HasValue() bool {
 	return false
 }
 
-// SetValue gets a reference to the given interface{} and assigns it to the Value field.
-func (o *RuleResult) SetValue(v interface{}) {
+// SetValue gets a reference to the given Any and assigns it to the Value field.
+func (o *RuleResult) SetValue(v Any) {
 	o.Value = &v
 }
 

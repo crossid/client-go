@@ -29,46 +29,46 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- description: Audit Endpoints
-  name: audit
-- description: Mappers Endpoints
-  name: mappers
+- description: Insight discovery and resolution Endpoints
+  name: insights
+- description: Secrets Endpoints
+  name: secrets
+- description: Changes Endpoints
+  name: changes
+- description: Filters Endpoints
+  name: filters
+- description: Node Health Endpoints
+  name: health
+- description: Jobs Endpoints
+  name: jobs
+- description: Schemas Endpoints
+  name: schemas
 - description: Portal Endpoints
   name: portal
+- description: rules Endpoints
+  name: rules
 - description: Resource References Endpoints
   name: refs
 - description: Resources Endpoints
   name: resources
-- description: Jobs Endpoints
-  name: jobs
-- description: rules Endpoints
-  name: rules
-- description: Node Health Endpoints
-  name: health
-- description: Insight discovery and resolution Endpoints
-  name: insights
-- description: Schemas Endpoints
-  name: schemas
+- description: Applications Endpoints
+  name: apps
+- description: Audit Endpoints
+  name: audit
 - description: Sessions Endpoints
   name: sessions
 - description: Login Endpoints
   name: login
 - description: Registration Endpoints
   name: register
-- description: Changes Endpoints
-  name: changes
-- description: Filters Endpoints
-  name: filters
 - description: Flows and Tasks endpoints
   name: flows
-- description: Applications Endpoints
-  name: apps
 - description: Data mining and role clustering Endpoints
   name: mining
+- description: Mappers Endpoints
+  name: mappers
 - description: Resource Types Endpoints
   name: resourceTypes
-- description: Secrets Endpoints
-  name: secrets
 paths:
   /apps/:
     get:
@@ -131,7 +131,7 @@ paths:
           type: string
         style: form
       - description: |
-          A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
+          A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
         explode: true
         in: query
         name: attributes
@@ -764,7 +764,7 @@ paths:
           type: string
         style: form
       - description: |
-          A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
+          A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
         explode: true
         in: query
         name: attributes
@@ -1328,7 +1328,7 @@ paths:
           type: string
         style: form
       - description: |
-          A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
+          A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
         explode: true
         in: query
         name: attributes
@@ -1725,7 +1725,7 @@ paths:
           type: string
         style: form
       - description: |
-          A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
+          A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
         explode: true
         in: query
         name: attributes
@@ -1866,7 +1866,7 @@ paths:
           type: string
         style: form
       - description: |
-          A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
+          A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
         explode: true
         in: query
         name: attributes
@@ -2007,7 +2007,7 @@ paths:
           type: string
         style: form
       - description: |
-          A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
+          A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
         explode: true
         in: query
         name: attributes
@@ -2148,7 +2148,7 @@ paths:
           type: string
         style: form
       - description: |
-          A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
+          A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
         explode: true
         in: query
         name: attributes
@@ -2358,7 +2358,7 @@ paths:
           type: string
         style: form
       - description: |
-          A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
+          A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
         explode: true
         in: query
         name: attributes
@@ -2888,7 +2888,7 @@ paths:
           type: string
         style: form
       - description: |
-          A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
+          A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
         explode: true
         in: query
         name: attributes
@@ -3212,7 +3212,7 @@ paths:
           type: string
         style: form
       - description: |
-          A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
+          A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
         explode: true
         in: query
         name: attributes
@@ -4035,7 +4035,7 @@ paths:
           type: string
         style: form
       - description: |
-          A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
+          A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
         explode: true
         in: query
         name: attributes
@@ -4581,7 +4581,7 @@ paths:
           type: string
         style: form
       - description: |
-          A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
+          A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
         explode: true
         in: query
         name: attributes
@@ -5115,7 +5115,7 @@ paths:
           type: string
         style: form
       - description: |
-          A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
+          A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
         explode: true
         in: query
         name: attributes
@@ -5641,7 +5641,7 @@ paths:
           type: string
         style: form
       - description: |
-          A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
+          A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
         explode: true
         in: query
         name: attributes
@@ -5921,7 +5921,7 @@ paths:
           type: string
         style: form
       - description: |
-          A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
+          A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
         explode: true
         in: query
         name: attributes
@@ -6321,7 +6321,7 @@ paths:
           type: string
         style: form
       - description: |
-          A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
+          A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
         explode: true
         in: query
         name: attributes
@@ -6702,7 +6702,7 @@ paths:
           type: string
         style: form
       - description: |
-          A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
+          A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
         explode: true
         in: query
         name: attributes
@@ -8258,7 +8258,7 @@ paths:
           type: string
         style: form
       - description: |
-          A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
+          A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
         explode: true
         in: query
         name: attributes
@@ -9067,7 +9067,7 @@ components:
   parameters:
     attributes:
       description: |
-        A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
+        A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.
       explode: true
       in: query
       name: attributes
@@ -10786,10 +10786,10 @@ components:
         path:
           type: string
         value:
-          type: interface{}
+          type: any
       type: object
     RuleResultValue:
-      type: interface{}
+      type: any
     SCIMSchema:
       example:
         meta:
