@@ -170,7 +170,7 @@ func main() {
     startIndex := int64(789) // int64 | The 1-based index of the first query result. A value less than 1 SHALL be interpreted as 1.  (optional) (default to 0)
     sortBy := "userName" // string | A string indicating the attribute whose value SHALL be used to order the returned responses. (optional)
     sortOrder := "ascending" // string | A string indicating the order in which the \"sortBy\" parameter is applied.  Allowed values are \"ascending\" and \"descending\". (optional)
-    attributes := []string{"Inner_example"} // []string | A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.  (optional)
+    attributes := []string{"Inner_example"} // []string | A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.  (optional)
     excludedAttributes := []string{"Inner_example"} // []string | A multi-valued list of strings indicating the names of resource attributes to be removed from the default set of attributes to return.  This parameter SHALL have no effect on attributes whose schema \"returned\" setting is \"always\".  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
  **startIndex** | **int64** | The 1-based index of the first query result. A value less than 1 SHALL be interpreted as 1.  | [default to 0]
  **sortBy** | **string** | A string indicating the attribute whose value SHALL be used to order the returned responses. | 
  **sortOrder** | **string** | A string indicating the order in which the \&quot;sortBy\&quot; parameter is applied.  Allowed values are \&quot;ascending\&quot; and \&quot;descending\&quot;. | 
- **attributes** | **[]string** | A multi-valued list of strings indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.  | 
+ **attributes** | **[]string** | A multi-valued list of strings, indicating the names of resource attributes to return in the response, overriding the set of attributes that would be returned by default.  | 
  **excludedAttributes** | **[]string** | A multi-valued list of strings indicating the names of resource attributes to be removed from the default set of attributes to return.  This parameter SHALL have no effect on attributes whose schema \&quot;returned\&quot; setting is \&quot;always\&quot;.  | 
 
 ### Return type
