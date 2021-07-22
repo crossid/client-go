@@ -29,46 +29,46 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- description: Mappers Endpoints
-  name: mappers
-- description: Resource References Endpoints
-  name: refs
-- description: Audit Endpoints
-  name: audit
 - description: Node Health Endpoints
   name: health
-- description: Filters Endpoints
-  name: filters
 - description: Insight discovery and resolution Endpoints
   name: insights
-- description: Jobs Endpoints
-  name: jobs
-- description: Schemas Endpoints
-  name: schemas
-- description: Portal Endpoints
-  name: portal
-- description: Applications Endpoints
-  name: apps
+- description: Mappers Endpoints
+  name: mappers
+- description: Audit Endpoints
+  name: audit
+- description: Flows and Tasks endpoints
+  name: flows
+- description: Resource Types Endpoints
+  name: resourceTypes
 - description: Sessions Endpoints
   name: sessions
 - description: Login Endpoints
   name: login
 - description: Registration Endpoints
   name: register
-- description: Resources Endpoints
-  name: resources
-- description: Resource Types Endpoints
-  name: resourceTypes
-- description: rules Endpoints
-  name: rules
-- description: Secrets Endpoints
-  name: secrets
-- description: Changes Endpoints
-  name: changes
-- description: Flows and Tasks endpoints
-  name: flows
+- description: Filters Endpoints
+  name: filters
 - description: Data mining and role clustering Endpoints
   name: mining
+- description: Schemas Endpoints
+  name: schemas
+- description: Portal Endpoints
+  name: portal
+- description: rules Endpoints
+  name: rules
+- description: Applications Endpoints
+  name: apps
+- description: Changes Endpoints
+  name: changes
+- description: Jobs Endpoints
+  name: jobs
+- description: Resource References Endpoints
+  name: refs
+- description: Resources Endpoints
+  name: resources
+- description: Secrets Endpoints
+  name: secrets
 paths:
   /apps/:
     get:
@@ -5581,6 +5581,189 @@ paths:
           description: An internal error has occured.
       tags:
       - oauth2
+  /oauth2/auth/requests/logout:
+    get:
+      operationId: getLogoutRequest
+      parameters:
+      - explode: true
+        in: query
+        name: challenge
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuth2LogoutRequest'
+          description: Get a lgout request by sso challenge
+        "400":
+          content:
+            application/json:
+              example:
+                code: "400"
+                message: 'Bad Request: Invalid argument (invalid request payload).'
+                status: Bad Request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The submitted request is invalid.
+        "401":
+          content:
+            application/json:
+              example:
+                code: "401"
+                message: client is not authenticated.
+                status: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Client is not authenticated.
+        "403":
+          content:
+            application/json:
+              example:
+                code: "403"
+                message: the request action is forbidden.
+                status: Forbidden
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Client is not authorized to perform the requested action.
+        "500":
+          content:
+            application/json:
+              example:
+                code: "500"
+                message: an internal error has occurred.
+                status: Internal Error
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: An internal error has occured.
+      tags:
+      - oauth2
+  /oauth2/auth/requests/logout/accept:
+    put:
+      operationId: acceptLogoutRequest
+      parameters:
+      - explode: true
+        in: query
+        name: challenge
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: authServerId
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuth2RequestHandlerResponse'
+          description: Login request was approved successfuly
+        "400":
+          content:
+            application/json:
+              example:
+                code: "400"
+                message: 'Bad Request: Invalid argument (invalid request payload).'
+                status: Bad Request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The submitted request is invalid.
+        "401":
+          content:
+            application/json:
+              example:
+                code: "401"
+                message: client is not authenticated.
+                status: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Client is not authenticated.
+        "403":
+          content:
+            application/json:
+              example:
+                code: "403"
+                message: the request action is forbidden.
+                status: Forbidden
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Client is not authorized to perform the requested action.
+        "500":
+          content:
+            application/json:
+              example:
+                code: "500"
+                message: an internal error has occurred.
+                status: Internal Error
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: An internal error has occured.
+      tags:
+      - oauth2
+  /oauth2/auth/requests/logout/reject:
+    put:
+      operationId: rejectLogoutRequest
+      parameters:
+      - explode: true
+        in: query
+        name: challenge
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "204":
+          description: Logout request was rejected successfuly
+        "400":
+          content:
+            application/json:
+              example:
+                code: "400"
+                message: 'Bad Request: Invalid argument (invalid request payload).'
+                status: Bad Request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The submitted request is invalid.
+        "401":
+          content:
+            application/json:
+              example:
+                code: "401"
+                message: client is not authenticated.
+                status: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Client is not authenticated.
+        "403":
+          content:
+            application/json:
+              example:
+                code: "403"
+                message: the request action is forbidden.
+                status: Forbidden
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Client is not authorized to perform the requested action.
+        "500":
+          content:
+            application/json:
+              example:
+                code: "500"
+                message: an internal error has occurred.
+                status: Internal Error
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: An internal error has occured.
+      tags:
+      - oauth2
   /oauth2/clients/:
     get:
       operationId: listOAUTH2Clients
@@ -10349,6 +10532,8 @@ components:
           type: integer
         meta:
           $ref: '#/components/schemas/App_meta'
+        redirectAfterLogoutURL:
+          type: string
         refreshTokenLifespan:
           format: int64
           type: integer
@@ -10557,6 +10742,28 @@ components:
           type: string
         skip:
           type: boolean
+        subject:
+          type: string
+      type: object
+    OAuth2LogoutRequest:
+      example:
+        subject: subject
+        challenge: challenge
+        rp_initiated: true
+        session_id: session_id
+        request_url: request_url
+        auth_server_id: auth_server_id
+      properties:
+        auth_server_id:
+          type: string
+        challenge:
+          type: string
+        request_url:
+          type: string
+        rp_initiated:
+          type: boolean
+        session_id:
+          type: string
         subject:
           type: string
       type: object

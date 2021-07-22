@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **IdTokenLifespan** | Pointer to **int64** |  | [optional] 
 **Meta** | Pointer to [**AppMeta**](AppMeta.md) |  | [optional] 
+**RedirectAfterLogoutURL** | Pointer to **string** |  | [optional] 
 **RefreshTokenLifespan** | Pointer to **int64** |  | [optional] 
 **ScopeStrategy** | Pointer to **string** |  | [optional] 
 **SubjectIdentifierAlgorithmSalt** | Pointer to **string** |  | [optional] 
@@ -366,6 +367,31 @@ SetMeta sets Meta field to given value.
 `func (o *OAuth2AuthServer) HasMeta() bool`
 
 HasMeta returns a boolean if a field has been set.
+
+### GetRedirectAfterLogoutURL
+
+`func (o *OAuth2AuthServer) GetRedirectAfterLogoutURL() string`
+
+GetRedirectAfterLogoutURL returns the RedirectAfterLogoutURL field if non-nil, zero value otherwise.
+
+### GetRedirectAfterLogoutURLOk
+
+`func (o *OAuth2AuthServer) GetRedirectAfterLogoutURLOk() (*string, bool)`
+
+GetRedirectAfterLogoutURLOk returns a tuple with the RedirectAfterLogoutURL field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRedirectAfterLogoutURL
+
+`func (o *OAuth2AuthServer) SetRedirectAfterLogoutURL(v string)`
+
+SetRedirectAfterLogoutURL sets RedirectAfterLogoutURL field to given value.
+
+### HasRedirectAfterLogoutURL
+
+`func (o *OAuth2AuthServer) HasRedirectAfterLogoutURL() bool`
+
+HasRedirectAfterLogoutURL returns a boolean if a field has been set.
 
 ### GetRefreshTokenLifespan
 

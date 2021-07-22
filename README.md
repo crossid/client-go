@@ -132,12 +132,15 @@ Class | Method | HTTP request | Description
 *MiningApi* | [**ExportClassificationData**](docs/MiningApi.md#exportclassificationdata) | **Post** /mining/export-classification-data | Send classication data to ML server.
 *Oauth2Api* | [**AcceptConsentRequest**](docs/Oauth2Api.md#acceptconsentrequest) | **Put** /oauth2/auth/requests/consent/accept | 
 *Oauth2Api* | [**AcceptLoginRequest**](docs/Oauth2Api.md#acceptloginrequest) | **Put** /oauth2/auth/requests/login/accept | 
+*Oauth2Api* | [**AcceptLogoutRequest**](docs/Oauth2Api.md#acceptlogoutrequest) | **Put** /oauth2/auth/requests/logout/accept | 
 *Oauth2Api* | [**GetConsentRequest**](docs/Oauth2Api.md#getconsentrequest) | **Get** /oauth2/auth/requests/consent | 
 *Oauth2Api* | [**GetLoginRequest**](docs/Oauth2Api.md#getloginrequest) | **Get** /oauth2/auth/requests/login | 
+*Oauth2Api* | [**GetLogoutRequest**](docs/Oauth2Api.md#getlogoutrequest) | **Get** /oauth2/auth/requests/logout | 
 *Oauth2Api* | [**ListOAUTH2AuthorizationServers**](docs/Oauth2Api.md#listoauth2authorizationservers) | **Get** /oauth2/auhtorization-servers/ | List OAUTH 2.0 Authorization Servers.
 *Oauth2Api* | [**ListOAUTH2Clients**](docs/Oauth2Api.md#listoauth2clients) | **Get** /oauth2/clients/ | List OAUTH 2.0 Clients.
 *Oauth2Api* | [**RejectConsentRequest**](docs/Oauth2Api.md#rejectconsentrequest) | **Put** /oauth2/auth/requests/consent/reject | 
 *Oauth2Api* | [**RejectLoginRequest**](docs/Oauth2Api.md#rejectloginrequest) | **Put** /oauth2/auth/requests/login/reject | 
+*Oauth2Api* | [**RejectLogoutRequest**](docs/Oauth2Api.md#rejectlogoutrequest) | **Put** /oauth2/auth/requests/logout/reject | 
 *PortalApi* | [**PortalFindRequest**](docs/PortalApi.md#portalfindrequest) | **Post** /portal/.gsearch | Make a portal specific resources search
 *PortalApi* | [**PortalRequest**](docs/PortalApi.md#portalrequest) | **Post** /portal/request | Make a portal request
 *RegisterApi* | [**GetRegistrationFlow**](docs/RegisterApi.md#getregistrationflow) | **Get** /auth/flows/register/{id} | Info for a specific register flow.
@@ -258,6 +261,7 @@ Class | Method | HTTP request | Description
  - [OAuth2HandledConsentRequest](docs/OAuth2HandledConsentRequest.md)
  - [OAuth2HandledLoginRequest](docs/OAuth2HandledLoginRequest.md)
  - [OAuth2LoginRequest](docs/OAuth2LoginRequest.md)
+ - [OAuth2LogoutRequest](docs/OAuth2LogoutRequest.md)
  - [OAuth2RequestDeniedError](docs/OAuth2RequestDeniedError.md)
  - [OAuth2RequestHandlerResponse](docs/OAuth2RequestHandlerResponse.md)
  - [Oauth2ClientList](docs/Oauth2ClientList.md)
