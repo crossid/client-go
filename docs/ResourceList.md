@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**TotalResults** | Pointer to **int64** |  | [optional] 
 **ItemsPerPage** | Pointer to **int32** |  | [optional] 
 **StartIndex** | Pointer to **int64** |  | [optional] 
-**TotalResults** | Pointer to **int64** |  | [optional] 
 **Resources** | [**[]Resource**](Resource.md) |  | 
 
 ## Methods
@@ -27,6 +27,31 @@ will change when the set of required properties is changed
 NewResourceListWithDefaults instantiates a new ResourceList object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetTotalResults
+
+`func (o *ResourceList) GetTotalResults() int64`
+
+GetTotalResults returns the TotalResults field if non-nil, zero value otherwise.
+
+### GetTotalResultsOk
+
+`func (o *ResourceList) GetTotalResultsOk() (*int64, bool)`
+
+GetTotalResultsOk returns a tuple with the TotalResults field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalResults
+
+`func (o *ResourceList) SetTotalResults(v int64)`
+
+SetTotalResults sets TotalResults field to given value.
+
+### HasTotalResults
+
+`func (o *ResourceList) HasTotalResults() bool`
+
+HasTotalResults returns a boolean if a field has been set.
 
 ### GetItemsPerPage
 
@@ -77,31 +102,6 @@ SetStartIndex sets StartIndex field to given value.
 `func (o *ResourceList) HasStartIndex() bool`
 
 HasStartIndex returns a boolean if a field has been set.
-
-### GetTotalResults
-
-`func (o *ResourceList) GetTotalResults() int64`
-
-GetTotalResults returns the TotalResults field if non-nil, zero value otherwise.
-
-### GetTotalResultsOk
-
-`func (o *ResourceList) GetTotalResultsOk() (*int64, bool)`
-
-GetTotalResultsOk returns a tuple with the TotalResults field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTotalResults
-
-`func (o *ResourceList) SetTotalResults(v int64)`
-
-SetTotalResults sets TotalResults field to given value.
-
-### HasTotalResults
-
-`func (o *ResourceList) HasTotalResults() bool`
-
-HasTotalResults returns a boolean if a field has been set.
 
 ### GetResources
 

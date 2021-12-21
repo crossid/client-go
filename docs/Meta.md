@@ -4,21 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**TenantId** | **string** |  | 
 **AppId** | Pointer to **string** |  | [optional] 
-**CommitId** | Pointer to **string** |  | [optional] 
+**ResourceType** | **string** |  | 
 **Created** | Pointer to **time.Time** |  | [optional] 
 **LastModified** | Pointer to **time.Time** |  | [optional] 
+**Revision** | **float32** |  | 
 **Location** | Pointer to **string** |  | [optional] 
-**RefersToId** | Pointer to **string** |  | [optional] 
-**ResourceType** | Pointer to **string** |  | [optional] 
-**Revision** | Pointer to **int64** |  | [optional] 
-**TenantId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewMeta
 
-`func NewMeta() *Meta`
+`func NewMeta(tenantId string, resourceType string, revision float32, ) *Meta`
 
 NewMeta instantiates a new Meta object
 This constructor will assign default values to properties that have it defined,
@@ -32,6 +30,26 @@ will change when the set of required properties is changed
 NewMetaWithDefaults instantiates a new Meta object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetTenantId
+
+`func (o *Meta) GetTenantId() string`
+
+GetTenantId returns the TenantId field if non-nil, zero value otherwise.
+
+### GetTenantIdOk
+
+`func (o *Meta) GetTenantIdOk() (*string, bool)`
+
+GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantId
+
+`func (o *Meta) SetTenantId(v string)`
+
+SetTenantId sets TenantId field to given value.
+
 
 ### GetAppId
 
@@ -58,30 +76,25 @@ SetAppId sets AppId field to given value.
 
 HasAppId returns a boolean if a field has been set.
 
-### GetCommitId
+### GetResourceType
 
-`func (o *Meta) GetCommitId() string`
+`func (o *Meta) GetResourceType() string`
 
-GetCommitId returns the CommitId field if non-nil, zero value otherwise.
+GetResourceType returns the ResourceType field if non-nil, zero value otherwise.
 
-### GetCommitIdOk
+### GetResourceTypeOk
 
-`func (o *Meta) GetCommitIdOk() (*string, bool)`
+`func (o *Meta) GetResourceTypeOk() (*string, bool)`
 
-GetCommitIdOk returns a tuple with the CommitId field if it's non-nil, zero value otherwise
+GetResourceTypeOk returns a tuple with the ResourceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCommitId
+### SetResourceType
 
-`func (o *Meta) SetCommitId(v string)`
+`func (o *Meta) SetResourceType(v string)`
 
-SetCommitId sets CommitId field to given value.
+SetResourceType sets ResourceType field to given value.
 
-### HasCommitId
-
-`func (o *Meta) HasCommitId() bool`
-
-HasCommitId returns a boolean if a field has been set.
 
 ### GetCreated
 
@@ -133,6 +146,26 @@ SetLastModified sets LastModified field to given value.
 
 HasLastModified returns a boolean if a field has been set.
 
+### GetRevision
+
+`func (o *Meta) GetRevision() float32`
+
+GetRevision returns the Revision field if non-nil, zero value otherwise.
+
+### GetRevisionOk
+
+`func (o *Meta) GetRevisionOk() (*float32, bool)`
+
+GetRevisionOk returns a tuple with the Revision field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRevision
+
+`func (o *Meta) SetRevision(v float32)`
+
+SetRevision sets Revision field to given value.
+
+
 ### GetLocation
 
 `func (o *Meta) GetLocation() string`
@@ -157,106 +190,6 @@ SetLocation sets Location field to given value.
 `func (o *Meta) HasLocation() bool`
 
 HasLocation returns a boolean if a field has been set.
-
-### GetRefersToId
-
-`func (o *Meta) GetRefersToId() string`
-
-GetRefersToId returns the RefersToId field if non-nil, zero value otherwise.
-
-### GetRefersToIdOk
-
-`func (o *Meta) GetRefersToIdOk() (*string, bool)`
-
-GetRefersToIdOk returns a tuple with the RefersToId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRefersToId
-
-`func (o *Meta) SetRefersToId(v string)`
-
-SetRefersToId sets RefersToId field to given value.
-
-### HasRefersToId
-
-`func (o *Meta) HasRefersToId() bool`
-
-HasRefersToId returns a boolean if a field has been set.
-
-### GetResourceType
-
-`func (o *Meta) GetResourceType() string`
-
-GetResourceType returns the ResourceType field if non-nil, zero value otherwise.
-
-### GetResourceTypeOk
-
-`func (o *Meta) GetResourceTypeOk() (*string, bool)`
-
-GetResourceTypeOk returns a tuple with the ResourceType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetResourceType
-
-`func (o *Meta) SetResourceType(v string)`
-
-SetResourceType sets ResourceType field to given value.
-
-### HasResourceType
-
-`func (o *Meta) HasResourceType() bool`
-
-HasResourceType returns a boolean if a field has been set.
-
-### GetRevision
-
-`func (o *Meta) GetRevision() int64`
-
-GetRevision returns the Revision field if non-nil, zero value otherwise.
-
-### GetRevisionOk
-
-`func (o *Meta) GetRevisionOk() (*int64, bool)`
-
-GetRevisionOk returns a tuple with the Revision field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRevision
-
-`func (o *Meta) SetRevision(v int64)`
-
-SetRevision sets Revision field to given value.
-
-### HasRevision
-
-`func (o *Meta) HasRevision() bool`
-
-HasRevision returns a boolean if a field has been set.
-
-### GetTenantId
-
-`func (o *Meta) GetTenantId() string`
-
-GetTenantId returns the TenantId field if non-nil, zero value otherwise.
-
-### GetTenantIdOk
-
-`func (o *Meta) GetTenantIdOk() (*string, bool)`
-
-GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTenantId
-
-`func (o *Meta) SetTenantId(v string)`
-
-SetTenantId sets TenantId field to given value.
-
-### HasTenantId
-
-`func (o *Meta) HasTenantId() bool`
-
-HasTenantId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

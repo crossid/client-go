@@ -1,13 +1,13 @@
 # \ResourceTypesApi
 
-All URIs are relative to *http://dev.local.crossid.io:8000/api/v1*
+All URIs are relative to *https://acme.us.crossid.io/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateResourceType**](ResourceTypesApi.md#CreateResourceType) | **Post** /resource-types/ | Create a Resource Type
-[**GetResourceType**](ResourceTypesApi.md#GetResourceType) | **Get** /resource-types/{id} | Get a Resource Type
-[**ListResourceTypes**](ResourceTypesApi.md#ListResourceTypes) | **Get** /resource-types/ | List Resource Types
-[**ReplaceResourceType**](ResourceTypesApi.md#ReplaceResourceType) | **Put** /resource-types/{id} | Replace a Resource Type
+[**CreateResourceType**](ResourceTypesApi.md#CreateResourceType) | **Post** /api/v1/resource-types | Create a new Resource Type
+[**GetResourceType**](ResourceTypesApi.md#GetResourceType) | **Get** /api/v1/resource-types/{id} | Retrieve an existing Resource Type.
+[**ListResourceTypes**](ResourceTypesApi.md#ListResourceTypes) | **Get** /api/v1/resource-types | List existing Resource Types.
+[**ReplaceResourceType**](ResourceTypesApi.md#ReplaceResourceType) | **Put** /api/v1/resource-types/{id} | Replace an existing Resource Type
 
 
 
@@ -15,7 +15,9 @@ Method | HTTP request | Description
 
 > ResourceType CreateResourceType(ctx).Reason(reason).ResourceType(resourceType).Execute()
 
-Create a Resource Type
+Create a new Resource Type
+
+
 
 ### Example
 
@@ -30,8 +32,8 @@ import (
 )
 
 func main() {
-    reason := "required due to..." // string | a descriptive reason of the change  (optional)
-    resourceType := *openapiclient.NewResourceType() // ResourceType |  (optional)
+    reason := "approved by ticket 4423." // string | A descriptive reason of the change
+    resourceType := *openapiclient.NewResourceType() // ResourceType | A Resource Type in JSON format. (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -56,8 +58,8 @@ Other parameters are passed through a pointer to a apiCreateResourceTypeRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **reason** | **string** | a descriptive reason of the change  | 
- **resourceType** | [**ResourceType**](ResourceType.md) |  | 
+ **reason** | **string** | A descriptive reason of the change | 
+ **resourceType** | [**ResourceType**](ResourceType.md) | A Resource Type in JSON format. | 
 
 ### Return type
 
@@ -65,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -81,7 +83,9 @@ Name | Type | Description  | Notes
 
 > ResourceType GetResourceType(ctx, id).Execute()
 
-Get a Resource Type
+Retrieve an existing Resource Type.
+
+
 
 ### Example
 
@@ -96,7 +100,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | The id of the resource type to retrieve.
+    id := "T9e682kLYG6iYFSjo5RJVW" // string | The resource type ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -116,7 +120,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The id of the resource type to retrieve. | 
+**id** | **string** | The resource type ID | 
 
 ### Other Parameters
 
@@ -133,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -147,9 +151,11 @@ Name | Type | Description  | Notes
 
 ## ListResourceTypes
 
-> ResourceTypesList ListResourceTypes(ctx).Filter(filter).Count(count).StartIndex(startIndex).SortBy(sortBy).SortOrder(sortOrder).Attributes(attributes).ExcludedAttributes(excludedAttributes).ForTime(forTime).Execute()
+> ResourceTypeList ListResourceTypes(ctx).Filter(filter).Count(count).StartIndex(startIndex).SortBy(sortBy).SortOrder(sortOrder).Attributes(attributes).ExcludedAttributes(excludedAttributes).ForTime(forTime).Execute()
 
-List Resource Types
+List existing Resource Types.
+
+
 
 ### Example
 
@@ -181,7 +187,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ResourceTypesApi.ListResourceTypes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListResourceTypes`: ResourceTypesList
+    // response from `ListResourceTypes`: ResourceTypeList
     fmt.Fprintf(os.Stdout, "Response from `ResourceTypesApi.ListResourceTypes`: %v\n", resp)
 }
 ```
@@ -208,11 +214,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResourceTypesList**](ResourceTypesList.md)
+[**ResourceTypeList**](ResourceTypeList.md)
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -228,7 +234,9 @@ Name | Type | Description  | Notes
 
 > ResourceType ReplaceResourceType(ctx, id).Reason(reason).ResourceType(resourceType).Execute()
 
-Replace a Resource Type
+Replace an existing Resource Type
+
+
 
 ### Example
 
@@ -243,9 +251,9 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | The id of the resource type to replace.
-    reason := "required due to..." // string | a descriptive reason of the change  (optional)
-    resourceType := *openapiclient.NewResourceType() // ResourceType |  (optional)
+    id := "T9e682kLYG6iYFSjo5RJVW" // string | The resource type ID
+    reason := "approved by ticket 4423." // string | A descriptive reason of the change
+    resourceType := *openapiclient.NewResourceType() // ResourceType | A Resource Type in JSON format. (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -265,7 +273,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The id of the resource type to replace. | 
+**id** | **string** | The resource type ID | 
 
 ### Other Parameters
 
@@ -275,8 +283,8 @@ Other parameters are passed through a pointer to a apiReplaceResourceTypeRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **reason** | **string** | a descriptive reason of the change  | 
- **resourceType** | [**ResourceType**](ResourceType.md) |  | 
+ **reason** | **string** | A descriptive reason of the change | 
+ **resourceType** | [**ResourceType**](ResourceType.md) | A Resource Type in JSON format. | 
 
 ### Return type
 
@@ -284,7 +292,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

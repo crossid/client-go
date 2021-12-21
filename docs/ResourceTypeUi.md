@@ -4,9 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Edit** | Pointer to **[]string** |  | [optional] 
-**Overview** | Pointer to **[]string** |  | [optional] 
-**Rules** | Pointer to **[]string** |  | [optional] 
+**Overview** | Pointer to **[]string** | The attributes to display in the resource page. | [optional] 
+**Edit** | Pointer to **[]string** | The attributes to let client edit. | [optional] 
 
 ## Methods
 
@@ -26,31 +25,6 @@ will change when the set of required properties is changed
 NewResourceTypeUiWithDefaults instantiates a new ResourceTypeUi object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetEdit
-
-`func (o *ResourceTypeUi) GetEdit() []string`
-
-GetEdit returns the Edit field if non-nil, zero value otherwise.
-
-### GetEditOk
-
-`func (o *ResourceTypeUi) GetEditOk() (*[]string, bool)`
-
-GetEditOk returns a tuple with the Edit field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEdit
-
-`func (o *ResourceTypeUi) SetEdit(v []string)`
-
-SetEdit sets Edit field to given value.
-
-### HasEdit
-
-`func (o *ResourceTypeUi) HasEdit() bool`
-
-HasEdit returns a boolean if a field has been set.
 
 ### GetOverview
 
@@ -77,30 +51,30 @@ SetOverview sets Overview field to given value.
 
 HasOverview returns a boolean if a field has been set.
 
-### GetRules
+### GetEdit
 
-`func (o *ResourceTypeUi) GetRules() []string`
+`func (o *ResourceTypeUi) GetEdit() []string`
 
-GetRules returns the Rules field if non-nil, zero value otherwise.
+GetEdit returns the Edit field if non-nil, zero value otherwise.
 
-### GetRulesOk
+### GetEditOk
 
-`func (o *ResourceTypeUi) GetRulesOk() (*[]string, bool)`
+`func (o *ResourceTypeUi) GetEditOk() (*[]string, bool)`
 
-GetRulesOk returns a tuple with the Rules field if it's non-nil, zero value otherwise
+GetEditOk returns a tuple with the Edit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRules
+### SetEdit
 
-`func (o *ResourceTypeUi) SetRules(v []string)`
+`func (o *ResourceTypeUi) SetEdit(v []string)`
 
-SetRules sets Rules field to given value.
+SetEdit sets Edit field to given value.
 
-### HasRules
+### HasEdit
 
-`func (o *ResourceTypeUi) HasRules() bool`
+`func (o *ResourceTypeUi) HasEdit() bool`
 
-HasRules returns a boolean if a field has been set.
+HasEdit returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

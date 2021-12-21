@@ -1,89 +1,22 @@
 # \SchemasApi
 
-All URIs are relative to *http://dev.local.crossid.io:8000/api/v1*
+All URIs are relative to *https://acme.us.crossid.io/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateJSONSchema**](SchemasApi.md#CreateJSONSchema) | **Post** /json-schemas/ | Create JSON Schema
-[**CreateSCIMSchema**](SchemasApi.md#CreateSCIMSchema) | **Post** /scim-schemas/ | Create a SCIM Schema
-[**GetJSONSchema**](SchemasApi.md#GetJSONSchema) | **Get** /json-schemas/{id} | Get a JSON Schema
-[**GetSCIMSchema**](SchemasApi.md#GetSCIMSchema) | **Get** /scim-schemas/{id} | Get a SCIM Schema
-[**ReplaceJSONSchema**](SchemasApi.md#ReplaceJSONSchema) | **Put** /json-schemas/{id} | replace a JSON Schema
-[**ReplaceSCIMSchema**](SchemasApi.md#ReplaceSCIMSchema) | **Put** /scim-schemas/{id} | Replace a SCIM Schema
+[**CreateSCIMSchema**](SchemasApi.md#CreateSCIMSchema) | **Post** /api/v1/scim-schemas | Create a new SCIM Schema
+[**GetSCIMSchema**](SchemasApi.md#GetSCIMSchema) | **Get** /api/v1/scim-schemas/{id} | Retrieve an existing SCIM Schema.
+[**ReplaceSCIMSchema**](SchemasApi.md#ReplaceSCIMSchema) | **Put** /api/v1/scim-schemas/{id} | Replace an existing SCIM Schema
 
-
-
-## CreateJSONSchema
-
-> JSONSchema CreateJSONSchema(ctx).Reason(reason).JSONSchema(jSONSchema).Execute()
-
-Create JSON Schema
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    reason := "required due to..." // string | a descriptive reason of the change  (optional)
-    jSONSchema := *openapiclient.NewJSONSchema() // JSONSchema |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SchemasApi.CreateJSONSchema(context.Background()).Reason(reason).JSONSchema(jSONSchema).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SchemasApi.CreateJSONSchema``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateJSONSchema`: JSONSchema
-    fmt.Fprintf(os.Stdout, "Response from `SchemasApi.CreateJSONSchema`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateJSONSchemaRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **reason** | **string** | a descriptive reason of the change  | 
- **jSONSchema** | [**JSONSchema**](JSONSchema.md) |  | 
-
-### Return type
-
-[**JSONSchema**](JSONSchema.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## CreateSCIMSchema
 
-> SCIMSchema CreateSCIMSchema(ctx).Reason(reason).SCIMSchema(sCIMSchema).Execute()
+> ScimSchema CreateSCIMSchema(ctx).Reason(reason).ScimSchema(scimSchema).Execute()
 
-Create a SCIM Schema
+Create a new SCIM Schema
+
+
 
 ### Example
 
@@ -98,17 +31,17 @@ import (
 )
 
 func main() {
-    reason := "required due to..." // string | a descriptive reason of the change  (optional)
-    sCIMSchema := *openapiclient.NewSCIMSchema() // SCIMSchema |  (optional)
+    reason := "approved by ticket 4423." // string | A descriptive reason of the change
+    scimSchema := *openapiclient.NewScimSchema() // ScimSchema | A SCIM Schema, in JSON format. (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SchemasApi.CreateSCIMSchema(context.Background()).Reason(reason).SCIMSchema(sCIMSchema).Execute()
+    resp, r, err := api_client.SchemasApi.CreateSCIMSchema(context.Background()).Reason(reason).ScimSchema(scimSchema).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SchemasApi.CreateSCIMSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateSCIMSchema`: SCIMSchema
+    // response from `CreateSCIMSchema`: ScimSchema
     fmt.Fprintf(os.Stdout, "Response from `SchemasApi.CreateSCIMSchema`: %v\n", resp)
 }
 ```
@@ -124,16 +57,16 @@ Other parameters are passed through a pointer to a apiCreateSCIMSchemaRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **reason** | **string** | a descriptive reason of the change  | 
- **sCIMSchema** | [**SCIMSchema**](SCIMSchema.md) |  | 
+ **reason** | **string** | A descriptive reason of the change | 
+ **scimSchema** | [**ScimSchema**](ScimSchema.md) | A SCIM Schema, in JSON format. | 
 
 ### Return type
 
-[**SCIMSchema**](SCIMSchema.md)
+[**ScimSchema**](ScimSchema.md)
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -145,79 +78,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetJSONSchema
-
-> JSONSchema GetJSONSchema(ctx, id).Execute()
-
-Get a JSON Schema
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := "id_example" // string | The id of the schema to retrieve.
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SchemasApi.GetJSONSchema(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SchemasApi.GetJSONSchema``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetJSONSchema`: JSONSchema
-    fmt.Fprintf(os.Stdout, "Response from `SchemasApi.GetJSONSchema`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The id of the schema to retrieve. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetJSONSchemaRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**JSONSchema**](JSONSchema.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GetSCIMSchema
 
-> SCIMSchema GetSCIMSchema(ctx, id).Execute()
+> ScimSchema GetSCIMSchema(ctx, id).Execute()
 
-Get a SCIM Schema
+Retrieve an existing SCIM Schema.
+
+
 
 ### Example
 
@@ -232,7 +99,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | The id of the schema to retrieve.
+    id := "cidUser" // string | The schema ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -241,7 +108,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SchemasApi.GetSCIMSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSCIMSchema`: SCIMSchema
+    // response from `GetSCIMSchema`: ScimSchema
     fmt.Fprintf(os.Stdout, "Response from `SchemasApi.GetSCIMSchema`: %v\n", resp)
 }
 ```
@@ -252,7 +119,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The id of the schema to retrieve. | 
+**id** | **string** | The schema ID | 
 
 ### Other Parameters
 
@@ -265,11 +132,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SCIMSchema**](SCIMSchema.md)
+[**ScimSchema**](ScimSchema.md)
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -281,83 +148,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReplaceJSONSchema
-
-> JSONSchema ReplaceJSONSchema(ctx, id).Reason(reason).JSONSchema(jSONSchema).Execute()
-
-replace a JSON Schema
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := "id_example" // string | The id of the schema to replace.
-    reason := "required due to..." // string | a descriptive reason of the change  (optional)
-    jSONSchema := *openapiclient.NewJSONSchema() // JSONSchema |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SchemasApi.ReplaceJSONSchema(context.Background(), id).Reason(reason).JSONSchema(jSONSchema).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SchemasApi.ReplaceJSONSchema``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReplaceJSONSchema`: JSONSchema
-    fmt.Fprintf(os.Stdout, "Response from `SchemasApi.ReplaceJSONSchema`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The id of the schema to replace. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiReplaceJSONSchemaRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **reason** | **string** | a descriptive reason of the change  | 
- **jSONSchema** | [**JSONSchema**](JSONSchema.md) |  | 
-
-### Return type
-
-[**JSONSchema**](JSONSchema.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ReplaceSCIMSchema
 
-> SCIMSchema ReplaceSCIMSchema(ctx, id).Reason(reason).SCIMSchema(sCIMSchema).Execute()
+> ScimSchema ReplaceSCIMSchema(ctx, id).Reason(reason).ScimSchema(scimSchema).Execute()
 
-Replace a SCIM Schema
+Replace an existing SCIM Schema
+
+
 
 ### Example
 
@@ -372,18 +169,18 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | The id of the schema to replace.
-    reason := "required due to..." // string | a descriptive reason of the change  (optional)
-    sCIMSchema := *openapiclient.NewSCIMSchema() // SCIMSchema |  (optional)
+    id := "cidUser" // string | The schema ID
+    reason := "approved by ticket 4423." // string | A descriptive reason of the change
+    scimSchema := *openapiclient.NewScimSchema() // ScimSchema | A SCIM Schema, in JSON format. (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SchemasApi.ReplaceSCIMSchema(context.Background(), id).Reason(reason).SCIMSchema(sCIMSchema).Execute()
+    resp, r, err := api_client.SchemasApi.ReplaceSCIMSchema(context.Background(), id).Reason(reason).ScimSchema(scimSchema).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SchemasApi.ReplaceSCIMSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReplaceSCIMSchema`: SCIMSchema
+    // response from `ReplaceSCIMSchema`: ScimSchema
     fmt.Fprintf(os.Stdout, "Response from `SchemasApi.ReplaceSCIMSchema`: %v\n", resp)
 }
 ```
@@ -394,7 +191,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The id of the schema to replace. | 
+**id** | **string** | The schema ID | 
 
 ### Other Parameters
 
@@ -404,16 +201,16 @@ Other parameters are passed through a pointer to a apiReplaceSCIMSchemaRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **reason** | **string** | a descriptive reason of the change  | 
- **sCIMSchema** | [**SCIMSchema**](SCIMSchema.md) |  | 
+ **reason** | **string** | A descriptive reason of the change | 
+ **scimSchema** | [**ScimSchema**](ScimSchema.md) | A SCIM Schema, in JSON format. | 
 
 ### Return type
 
-[**SCIMSchema**](SCIMSchema.md)
+[**ScimSchema**](ScimSchema.md)
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

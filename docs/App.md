@@ -4,15 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Active** | Pointer to **bool** |  | [optional] 
-**AppId** | Pointer to **string** |  | [optional] 
-**AppLogic** | Pointer to **string** |  | [optional] 
-**Config** | Pointer to **interface{}** |  | [optional] 
-**DisplayName** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
-**Keywords** | Pointer to **[]string** |  | [optional] 
-**LogoURL** | Pointer to **string** |  | [optional] 
-**Meta** | Pointer to [**AppMeta**](AppMeta.md) |  | [optional] 
+**Id** | Pointer to **string** | auto generated unique identifier of the app. | [optional] 
+**AppId** | Pointer to **string** | user friendly identifier of the app. | [optional] 
+**DisplayName** | Pointer to **string** | A descriptive name of the app. | [optional] 
+**AppLogic** | Pointer to **string** | The application logic controller. | [optional] 
+**Active** | Pointer to **bool** | A Boolean value indicating the App&#39;s administrative status. | [optional] 
+**LogoUrl** | Pointer to **string** | URL of the app&#39;s logo. | [optional] 
+**Config** | Pointer to **map[string]map[string]interface{}** | Application configuration, may vary according to the app logic. | [optional] 
 
 ## Methods
 
@@ -32,141 +30,6 @@ will change when the set of required properties is changed
 NewAppWithDefaults instantiates a new App object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetActive
-
-`func (o *App) GetActive() bool`
-
-GetActive returns the Active field if non-nil, zero value otherwise.
-
-### GetActiveOk
-
-`func (o *App) GetActiveOk() (*bool, bool)`
-
-GetActiveOk returns a tuple with the Active field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetActive
-
-`func (o *App) SetActive(v bool)`
-
-SetActive sets Active field to given value.
-
-### HasActive
-
-`func (o *App) HasActive() bool`
-
-HasActive returns a boolean if a field has been set.
-
-### GetAppId
-
-`func (o *App) GetAppId() string`
-
-GetAppId returns the AppId field if non-nil, zero value otherwise.
-
-### GetAppIdOk
-
-`func (o *App) GetAppIdOk() (*string, bool)`
-
-GetAppIdOk returns a tuple with the AppId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAppId
-
-`func (o *App) SetAppId(v string)`
-
-SetAppId sets AppId field to given value.
-
-### HasAppId
-
-`func (o *App) HasAppId() bool`
-
-HasAppId returns a boolean if a field has been set.
-
-### GetAppLogic
-
-`func (o *App) GetAppLogic() string`
-
-GetAppLogic returns the AppLogic field if non-nil, zero value otherwise.
-
-### GetAppLogicOk
-
-`func (o *App) GetAppLogicOk() (*string, bool)`
-
-GetAppLogicOk returns a tuple with the AppLogic field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAppLogic
-
-`func (o *App) SetAppLogic(v string)`
-
-SetAppLogic sets AppLogic field to given value.
-
-### HasAppLogic
-
-`func (o *App) HasAppLogic() bool`
-
-HasAppLogic returns a boolean if a field has been set.
-
-### GetConfig
-
-`func (o *App) GetConfig() interface{}`
-
-GetConfig returns the Config field if non-nil, zero value otherwise.
-
-### GetConfigOk
-
-`func (o *App) GetConfigOk() (*interface{}, bool)`
-
-GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConfig
-
-`func (o *App) SetConfig(v interface{})`
-
-SetConfig sets Config field to given value.
-
-### HasConfig
-
-`func (o *App) HasConfig() bool`
-
-HasConfig returns a boolean if a field has been set.
-
-### SetConfigNil
-
-`func (o *App) SetConfigNil(b bool)`
-
- SetConfigNil sets the value for Config to be an explicit nil
-
-### UnsetConfig
-`func (o *App) UnsetConfig()`
-
-UnsetConfig ensures that no value is present for Config, not even an explicit nil
-### GetDisplayName
-
-`func (o *App) GetDisplayName() string`
-
-GetDisplayName returns the DisplayName field if non-nil, zero value otherwise.
-
-### GetDisplayNameOk
-
-`func (o *App) GetDisplayNameOk() (*string, bool)`
-
-GetDisplayNameOk returns a tuple with the DisplayName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDisplayName
-
-`func (o *App) SetDisplayName(v string)`
-
-SetDisplayName sets DisplayName field to given value.
-
-### HasDisplayName
-
-`func (o *App) HasDisplayName() bool`
-
-HasDisplayName returns a boolean if a field has been set.
 
 ### GetId
 
@@ -193,80 +56,155 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
-### GetKeywords
+### GetAppId
 
-`func (o *App) GetKeywords() []string`
+`func (o *App) GetAppId() string`
 
-GetKeywords returns the Keywords field if non-nil, zero value otherwise.
+GetAppId returns the AppId field if non-nil, zero value otherwise.
 
-### GetKeywordsOk
+### GetAppIdOk
 
-`func (o *App) GetKeywordsOk() (*[]string, bool)`
+`func (o *App) GetAppIdOk() (*string, bool)`
 
-GetKeywordsOk returns a tuple with the Keywords field if it's non-nil, zero value otherwise
+GetAppIdOk returns a tuple with the AppId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetKeywords
+### SetAppId
 
-`func (o *App) SetKeywords(v []string)`
+`func (o *App) SetAppId(v string)`
 
-SetKeywords sets Keywords field to given value.
+SetAppId sets AppId field to given value.
 
-### HasKeywords
+### HasAppId
 
-`func (o *App) HasKeywords() bool`
+`func (o *App) HasAppId() bool`
 
-HasKeywords returns a boolean if a field has been set.
+HasAppId returns a boolean if a field has been set.
 
-### GetLogoURL
+### GetDisplayName
 
-`func (o *App) GetLogoURL() string`
+`func (o *App) GetDisplayName() string`
 
-GetLogoURL returns the LogoURL field if non-nil, zero value otherwise.
+GetDisplayName returns the DisplayName field if non-nil, zero value otherwise.
 
-### GetLogoURLOk
+### GetDisplayNameOk
 
-`func (o *App) GetLogoURLOk() (*string, bool)`
+`func (o *App) GetDisplayNameOk() (*string, bool)`
 
-GetLogoURLOk returns a tuple with the LogoURL field if it's non-nil, zero value otherwise
+GetDisplayNameOk returns a tuple with the DisplayName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLogoURL
+### SetDisplayName
 
-`func (o *App) SetLogoURL(v string)`
+`func (o *App) SetDisplayName(v string)`
 
-SetLogoURL sets LogoURL field to given value.
+SetDisplayName sets DisplayName field to given value.
 
-### HasLogoURL
+### HasDisplayName
 
-`func (o *App) HasLogoURL() bool`
+`func (o *App) HasDisplayName() bool`
 
-HasLogoURL returns a boolean if a field has been set.
+HasDisplayName returns a boolean if a field has been set.
 
-### GetMeta
+### GetAppLogic
 
-`func (o *App) GetMeta() AppMeta`
+`func (o *App) GetAppLogic() string`
 
-GetMeta returns the Meta field if non-nil, zero value otherwise.
+GetAppLogic returns the AppLogic field if non-nil, zero value otherwise.
 
-### GetMetaOk
+### GetAppLogicOk
 
-`func (o *App) GetMetaOk() (*AppMeta, bool)`
+`func (o *App) GetAppLogicOk() (*string, bool)`
 
-GetMetaOk returns a tuple with the Meta field if it's non-nil, zero value otherwise
+GetAppLogicOk returns a tuple with the AppLogic field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMeta
+### SetAppLogic
 
-`func (o *App) SetMeta(v AppMeta)`
+`func (o *App) SetAppLogic(v string)`
 
-SetMeta sets Meta field to given value.
+SetAppLogic sets AppLogic field to given value.
 
-### HasMeta
+### HasAppLogic
 
-`func (o *App) HasMeta() bool`
+`func (o *App) HasAppLogic() bool`
 
-HasMeta returns a boolean if a field has been set.
+HasAppLogic returns a boolean if a field has been set.
+
+### GetActive
+
+`func (o *App) GetActive() bool`
+
+GetActive returns the Active field if non-nil, zero value otherwise.
+
+### GetActiveOk
+
+`func (o *App) GetActiveOk() (*bool, bool)`
+
+GetActiveOk returns a tuple with the Active field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActive
+
+`func (o *App) SetActive(v bool)`
+
+SetActive sets Active field to given value.
+
+### HasActive
+
+`func (o *App) HasActive() bool`
+
+HasActive returns a boolean if a field has been set.
+
+### GetLogoUrl
+
+`func (o *App) GetLogoUrl() string`
+
+GetLogoUrl returns the LogoUrl field if non-nil, zero value otherwise.
+
+### GetLogoUrlOk
+
+`func (o *App) GetLogoUrlOk() (*string, bool)`
+
+GetLogoUrlOk returns a tuple with the LogoUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLogoUrl
+
+`func (o *App) SetLogoUrl(v string)`
+
+SetLogoUrl sets LogoUrl field to given value.
+
+### HasLogoUrl
+
+`func (o *App) HasLogoUrl() bool`
+
+HasLogoUrl returns a boolean if a field has been set.
+
+### GetConfig
+
+`func (o *App) GetConfig() map[string]map[string]interface{}`
+
+GetConfig returns the Config field if non-nil, zero value otherwise.
+
+### GetConfigOk
+
+`func (o *App) GetConfigOk() (*map[string]map[string]interface{}, bool)`
+
+GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfig
+
+`func (o *App) SetConfig(v map[string]map[string]interface{})`
+
+SetConfig sets Config field to given value.
+
+### HasConfig
+
+`func (o *App) HasConfig() bool`
+
+HasConfig returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

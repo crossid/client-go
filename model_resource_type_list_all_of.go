@@ -15,33 +15,33 @@ import (
 	"encoding/json"
 )
 
-// ResourceListAllOf struct for ResourceListAllOf
-type ResourceListAllOf struct {
-	Resources []Resource `json:"Resources"`
+// ResourceTypeListAllOf struct for ResourceTypeListAllOf
+type ResourceTypeListAllOf struct {
+	Resources []ResourceType `json:"Resources"`
 }
 
-// NewResourceListAllOf instantiates a new ResourceListAllOf object
+// NewResourceTypeListAllOf instantiates a new ResourceTypeListAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResourceListAllOf(resources []Resource) *ResourceListAllOf {
-	this := ResourceListAllOf{}
+func NewResourceTypeListAllOf(resources []ResourceType) *ResourceTypeListAllOf {
+	this := ResourceTypeListAllOf{}
 	this.Resources = resources
 	return &this
 }
 
-// NewResourceListAllOfWithDefaults instantiates a new ResourceListAllOf object
+// NewResourceTypeListAllOfWithDefaults instantiates a new ResourceTypeListAllOf object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewResourceListAllOfWithDefaults() *ResourceListAllOf {
-	this := ResourceListAllOf{}
+func NewResourceTypeListAllOfWithDefaults() *ResourceTypeListAllOf {
+	this := ResourceTypeListAllOf{}
 	return &this
 }
 
 // GetResources returns the Resources field value
-func (o *ResourceListAllOf) GetResources() []Resource {
+func (o *ResourceTypeListAllOf) GetResources() []ResourceType {
 	if o == nil {
-		var ret []Resource
+		var ret []ResourceType
 		return ret
 	}
 
@@ -50,7 +50,7 @@ func (o *ResourceListAllOf) GetResources() []Resource {
 
 // GetResourcesOk returns a tuple with the Resources field value
 // and a boolean to check if the value has been set.
-func (o *ResourceListAllOf) GetResourcesOk() (*[]Resource, bool) {
+func (o *ResourceTypeListAllOf) GetResourcesOk() (*[]ResourceType, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -58,11 +58,11 @@ func (o *ResourceListAllOf) GetResourcesOk() (*[]Resource, bool) {
 }
 
 // SetResources sets field value
-func (o *ResourceListAllOf) SetResources(v []Resource) {
+func (o *ResourceTypeListAllOf) SetResources(v []ResourceType) {
 	o.Resources = v
 }
 
-func (o ResourceListAllOf) MarshalJSON() ([]byte, error) {
+func (o ResourceTypeListAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["Resources"] = o.Resources
@@ -70,38 +70,38 @@ func (o ResourceListAllOf) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableResourceListAllOf struct {
-	value *ResourceListAllOf
+type NullableResourceTypeListAllOf struct {
+	value *ResourceTypeListAllOf
 	isSet bool
 }
 
-func (v NullableResourceListAllOf) Get() *ResourceListAllOf {
+func (v NullableResourceTypeListAllOf) Get() *ResourceTypeListAllOf {
 	return v.value
 }
 
-func (v *NullableResourceListAllOf) Set(val *ResourceListAllOf) {
+func (v *NullableResourceTypeListAllOf) Set(val *ResourceTypeListAllOf) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableResourceListAllOf) IsSet() bool {
+func (v NullableResourceTypeListAllOf) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableResourceListAllOf) Unset() {
+func (v *NullableResourceTypeListAllOf) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableResourceListAllOf(val *ResourceListAllOf) *NullableResourceListAllOf {
-	return &NullableResourceListAllOf{value: val, isSet: true}
+func NewNullableResourceTypeListAllOf(val *ResourceTypeListAllOf) *NullableResourceTypeListAllOf {
+	return &NullableResourceTypeListAllOf{value: val, isSet: true}
 }
 
-func (v NullableResourceListAllOf) MarshalJSON() ([]byte, error) {
+func (v NullableResourceTypeListAllOf) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableResourceListAllOf) UnmarshalJSON(src []byte) error {
+func (v *NullableResourceTypeListAllOf) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

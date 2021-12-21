@@ -1,4 +1,4 @@
-module github.com/crossid/client-go
+module github.com/crossid/client-go/v2
 
 go 1.13
 
