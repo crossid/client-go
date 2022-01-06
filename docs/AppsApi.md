@@ -5,6 +5,7 @@ All URIs are relative to *https://acme.us.crossid.io/api/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateApp**](AppsApi.md#CreateApp) | **Post** /api/v1/apps | Create a an Application
+[**Deleteapp**](AppsApi.md#Deleteapp) | **Delete** /api/v1/apps | Delete an Application
 
 
 
@@ -69,6 +70,70 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Deleteapp
+
+> Deleteapp(ctx).Reason(reason).Execute()
+
+Delete an Application
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    reason := "approved by ticket 4423." // string | A descriptive reason of the change
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AppsApi.Deleteapp(context.Background()).Reason(reason).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppsApi.Deleteapp``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteappRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **reason** | **string** | A descriptive reason of the change | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

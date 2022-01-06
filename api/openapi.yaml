@@ -1020,6 +1020,61 @@ paths:
             -d '{"id": "myAppUser", "name": "User", "attributes": [{"name": "userName", "type": "string"}]}' \
             "https://acme.us.crossid.io/api/v1/resources/myapp/Groups?reason=needed"
   /api/v1/apps:
+    delete:
+      description: Delete an existing Application.
+      operationId: deleteapp
+      parameters:
+      - description: A descriptive reason of the change
+        example: approved by ticket 4423.
+        explode: true
+        in: query
+        name: reason
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "204":
+          description: Expected response to a valid request.
+        default:
+          content:
+            application/json:
+              examples:
+                "400":
+                  $ref: '#/components/examples/bad_request'
+                "401":
+                  $ref: '#/components/examples/unauthorized'
+                "403":
+                  $ref: '#/components/examples/forbidden'
+                "404":
+                  $ref: '#/components/examples/not_found'
+                "429":
+                  $ref: '#/components/examples/too_many_requests'
+                "500":
+                  $ref: '#/components/examples/internal_error'
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error
+          headers:
+            ratelimit-limit:
+              $ref: '#/components/headers/ratelimit-limit'
+            ratelimit-remaining:
+              $ref: '#/components/headers/ratelimit-remaining'
+            ratelimit-reset:
+              $ref: '#/components/headers/ratelimit-reset'
+      security:
+      - oauth2:
+        - app.write
+      summary: Delete an Application
+      tags:
+      - Apps
+      x-codeSamples:
+      - lang: cURL
+        source: |-
+          curl -X DELETE \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $CID_TOKEN" \
+            "https://acme.us.crossid.io/api/v1/apps/5eqtJP6z5bSjStMwhegqwH?reason=delete-myapp"
     post:
       description: Create a new Application with the given payload.
       operationId: createApp
@@ -1735,6 +1790,8 @@ components:
           $ref: '#/components/headers/ratelimit-remaining'
         ratelimit-reset:
           $ref: '#/components/headers/ratelimit-reset'
+    no_content:
+      description: Expected response to a valid request.
   schemas:
     attribute:
       description: SCIM Attribute model.

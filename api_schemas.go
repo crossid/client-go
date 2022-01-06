@@ -71,9 +71,7 @@ func (a *SchemasApiService) CreateSCIMSchemaExecute(r ApiCreateSCIMSchemaRequest
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 		localVarReturnValue  ScimSchema
 	)
 
@@ -111,7 +109,7 @@ func (a *SchemasApiService) CreateSCIMSchemaExecute(r ApiCreateSCIMSchemaRequest
 	}
 	// body params
 	localVarPostBody = r.scimSchema
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -189,9 +187,7 @@ func (a *SchemasApiService) GetSCIMSchemaExecute(r ApiGetSCIMSchemaRequest) (Sci
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 		localVarReturnValue  ScimSchema
 	)
 
@@ -224,7 +220,7 @@ func (a *SchemasApiService) GetSCIMSchemaExecute(r ApiGetSCIMSchemaRequest) (Sci
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -314,9 +310,7 @@ func (a *SchemasApiService) ReplaceSCIMSchemaExecute(r ApiReplaceSCIMSchemaReque
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 		localVarReturnValue  ScimSchema
 	)
 
@@ -355,7 +349,7 @@ func (a *SchemasApiService) ReplaceSCIMSchemaExecute(r ApiReplaceSCIMSchemaReque
 	}
 	// body params
 	localVarPostBody = r.scimSchema
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
