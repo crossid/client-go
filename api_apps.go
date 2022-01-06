@@ -17,6 +17,7 @@ import (
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
+	"strings"
 )
 
 // Linger please
@@ -155,6 +156,7 @@ func (a *AppsApiService) CreateAppExecute(r ApiCreateAppRequest) (App, *_nethttp
 type ApiDeleteappRequest struct {
 	ctx _context.Context
 	ApiService *AppsApiService
+	id string
 	reason *string
 }
 
@@ -174,12 +176,14 @@ Deleteapp Delete an Application
 Delete an existing Application.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id The App ID
  @return ApiDeleteappRequest
 */
-func (a *AppsApiService) Deleteapp(ctx _context.Context) ApiDeleteappRequest {
+func (a *AppsApiService) Deleteapp(ctx _context.Context, id string) ApiDeleteappRequest {
 	return ApiDeleteappRequest{
 		ApiService: a,
 		ctx: ctx,
+		id: id,
 	}
 }
 
@@ -197,6 +201,7 @@ func (a *AppsApiService) DeleteappExecute(r ApiDeleteappRequest) (*_nethttp.Resp
 	}
 
 	localVarPath := localBasePath + "/api/v1/apps/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

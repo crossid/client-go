@@ -1097,6 +1097,15 @@ paths:
       description: Delete an existing Application.
       operationId: deleteapp
       parameters:
+      - description: The App ID
+        example: 5eqtJP6z5bSjStMwhegqwH
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
       - description: A descriptive reason of the change
         example: approved by ticket 4423.
         explode: true
@@ -1597,6 +1606,16 @@ components:
       schema:
         type: string
       style: form
+    parameters_appId:
+      description: The App ID
+      example: 5eqtJP6z5bSjStMwhegqwH
+      explode: false
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+      style: simple
   requestBodies:
     create_schema:
       content:

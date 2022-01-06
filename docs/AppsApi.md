@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## Deleteapp
 
-> Deleteapp(ctx).Reason(reason).Execute()
+> Deleteapp(ctx, id).Reason(reason).Execute()
 
 Delete an Application
 
@@ -98,11 +98,12 @@ import (
 )
 
 func main() {
+    id := "5eqtJP6z5bSjStMwhegqwH" // string | The App ID
     reason := "approved by ticket 4423." // string | A descriptive reason of the change
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AppsApi.Deleteapp(context.Background()).Reason(reason).Execute()
+    resp, r, err := api_client.AppsApi.Deleteapp(context.Background(), id).Reason(reason).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AppsApi.Deleteapp``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -113,6 +114,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The App ID | 
 
 ### Other Parameters
 
@@ -121,6 +126,7 @@ Other parameters are passed through a pointer to a apiDeleteappRequest struct vi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **reason** | **string** | A descriptive reason of the change | 
 
 ### Return type
