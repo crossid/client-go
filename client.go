@@ -54,6 +54,8 @@ type APIClient struct {
 
 	JobsApi *JobsApiService
 
+	OAuth2Api *OAuth2ApiService
+
 	ResourceTypesApi *ResourceTypesApiService
 
 	ResourcesApi *ResourcesApiService
@@ -79,6 +81,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.AppsApi = (*AppsApiService)(&c.common)
 	c.JobsApi = (*JobsApiService)(&c.common)
+	c.OAuth2Api = (*OAuth2ApiService)(&c.common)
 	c.ResourceTypesApi = (*ResourceTypesApiService)(&c.common)
 	c.ResourcesApi = (*ResourcesApiService)(&c.common)
 	c.SchemasApi = (*SchemasApiService)(&c.common)
