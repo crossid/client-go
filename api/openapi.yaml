@@ -1020,61 +1020,6 @@ paths:
             -d '{"id": "myAppUser", "name": "User", "attributes": [{"name": "userName", "type": "string"}]}' \
             "https://acme.us.crossid.io/api/v1/resources/myapp/Groups?reason=needed"
   /api/v1/apps:
-    delete:
-      description: Delete an existing Application.
-      operationId: deleteapp
-      parameters:
-      - description: A descriptive reason of the change
-        example: approved by ticket 4423.
-        explode: true
-        in: query
-        name: reason
-        required: true
-        schema:
-          type: string
-        style: form
-      responses:
-        "204":
-          description: Expected response to a valid request.
-        default:
-          content:
-            application/json:
-              examples:
-                "400":
-                  $ref: '#/components/examples/bad_request'
-                "401":
-                  $ref: '#/components/examples/unauthorized'
-                "403":
-                  $ref: '#/components/examples/forbidden'
-                "404":
-                  $ref: '#/components/examples/not_found'
-                "429":
-                  $ref: '#/components/examples/too_many_requests'
-                "500":
-                  $ref: '#/components/examples/internal_error'
-              schema:
-                $ref: '#/components/schemas/error'
-          description: Error
-          headers:
-            ratelimit-limit:
-              $ref: '#/components/headers/ratelimit-limit'
-            ratelimit-remaining:
-              $ref: '#/components/headers/ratelimit-remaining'
-            ratelimit-reset:
-              $ref: '#/components/headers/ratelimit-reset'
-      security:
-      - oauth2:
-        - app.write
-      summary: Delete an Application
-      tags:
-      - Apps
-      x-codeSamples:
-      - lang: cURL
-        source: |-
-          curl -X DELETE \
-            -H "Content-Type: application/json" \
-            -H "Authorization: Bearer $CID_TOKEN" \
-            "https://acme.us.crossid.io/api/v1/apps/5eqtJP6z5bSjStMwhegqwH?reason=delete-myapp"
     post:
       description: Create a new Application with the given payload.
       operationId: createApp
@@ -1147,30 +1092,23 @@ paths:
             -H "Authorization: Bearer $CID_TOKEN" \
             -d '{"appId": "myapp", "displayName": "My App", "appLogic": "local", "active": true}' \
             "https://acme.us.crossid.io/api/v1/apps?reason=create-myapp"
-  /oauth2/token:
-    post:
-      description: The token endpoint is used by the client to obtain an access token
-        from an OAuth2 authorization server.
-      operationId: oauth2Token
-      requestBody:
-        $ref: '#/components/requestBodies/create_token'
+  /api/v1/apps/{id}:
+    delete:
+      description: Delete an existing Application.
+      operationId: deleteapp
+      parameters:
+      - description: A descriptive reason of the change
+        example: approved by ticket 4423.
+        explode: true
+        in: query
+        name: reason
+        required: true
+        schema:
+          type: string
+        style: form
       responses:
-        "200":
-          content:
-            application/json:
-              examples:
-                schema:
-                  $ref: '#/components/examples/accessToken'
-              schema:
-                $ref: '#/components/schemas/token'
-          description: A token, in JSON format.
-          headers:
-            ratelimit-limit:
-              $ref: '#/components/headers/ratelimit-limit'
-            ratelimit-remaining:
-              $ref: '#/components/headers/ratelimit-remaining'
-            ratelimit-reset:
-              $ref: '#/components/headers/ratelimit-reset'
+        "204":
+          description: Expected response to a valid request.
         default:
           content:
             application/json:
@@ -1197,18 +1135,19 @@ paths:
               $ref: '#/components/headers/ratelimit-remaining'
             ratelimit-reset:
               $ref: '#/components/headers/ratelimit-reset'
-      summary: Request a token from the OAuth2 authorization server.
+      security:
+      - oauth2:
+        - app.write
+      summary: Delete an Application
       tags:
-      - OAuth2
+      - Apps
       x-codeSamples:
       - lang: cURL
         source: |-
-          curl -X POST \
-            -F grant_type=client_credentials \
-            -F client_id=<client_id> \
-            -F client_secret=<client_secret> \
-            -F scope='read write'
-            "https://{tenant}.us.crossid.io/oauth2/token"
+          curl -X DELETE \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $CID_TOKEN" \
+            "https://acme.us.crossid.io/api/v1/apps/5eqtJP6z5bSjStMwhegqwH?reason=delete-myapp"
 components:
   examples:
     createScimSchema:
@@ -1456,19 +1395,6 @@ components:
           lastModified: 2021-09-13T19:00:14.646Z
           revision: 1
           location: /apps/5eqtJP6z5bSjStMwhegqwH
-    createToken:
-      value:
-        grant_type: client_credentials
-        client_id: vQJKyZkXXPBAPnoaCctWs6
-        client_secret: 238418237jhsdf8723iuasjdif2348
-        scope: write
-    accessToken:
-      value:
-        access_token: eyJhbGciOiJSUzI1NiIsImt...
-        expires_in: 3599
-        refresh_expires_in: 2592000000000000
-        scope: read write
-        token_type: bearer
   headers:
     ratelimit-limit:
       description: The default limit on number of requests that can be made per hour
@@ -1726,15 +1652,6 @@ components:
           schema:
             $ref: '#/components/schemas/app'
       description: An App in JSON format.
-    create_token:
-      content:
-        application/x-www-form-urlencoded:
-          examples:
-            schema:
-              $ref: '#/components/examples/createToken'
-          schema:
-            $ref: '#/components/schemas/token_request'
-      description: Token Request, as form data.
   responses:
     default_error:
       content:
@@ -1876,22 +1793,6 @@ components:
           $ref: '#/components/headers/ratelimit-reset'
     no_content:
       description: Expected response to a valid request.
-    token:
-      content:
-        application/json:
-          examples:
-            schema:
-              $ref: '#/components/examples/accessToken'
-          schema:
-            $ref: '#/components/schemas/token'
-      description: A token, in JSON format.
-      headers:
-        ratelimit-limit:
-          $ref: '#/components/headers/ratelimit-limit'
-        ratelimit-remaining:
-          $ref: '#/components/headers/ratelimit-remaining'
-        ratelimit-reset:
-          $ref: '#/components/headers/ratelimit-reset'
   schemas:
     attribute:
       description: SCIM Attribute model.
@@ -2356,48 +2257,6 @@ components:
           additionalProperties: true
           description: Application configuration, may vary according to the app logic.
           type: object
-      type: object
-    token_request:
-      description: OAuth2 token request.
-      properties:
-        grant_type:
-          description: The token grant type.
-          type: string
-        client_id:
-          description: The client id credential.
-          type: string
-        client_secret:
-          description: The client secret credential.
-          type: string
-        scope:
-          description: The requested scope of the access token.
-          type: string
-      type: object
-    token:
-      description: OAuth2 token model.
-      example:
-        access_token: access_token
-        scope: scope
-        token_type: bearer
-        expires_in: 0.8008281904610115
-      properties:
-        access_token:
-          description: The access token issued by the authorization server.
-          type: string
-        expires_in:
-          description: |
-            The lifetime in seconds of the access token.
-            For example, the value 3600 denotes that the access token will
-            expire in one hour from the time the response was generated.
-          type: number
-        scope:
-          description: The scope of the access token.
-          type: string
-        token_type:
-          description: The type of the token issued
-          enum:
-          - bearer
-          type: string
       type: object
     attribute_search:
       example:

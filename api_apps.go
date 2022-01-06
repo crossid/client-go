@@ -196,7 +196,7 @@ func (a *AppsApiService) DeleteappExecute(r ApiDeleteappRequest) (*_nethttp.Resp
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/apps"
+	localVarPath := localBasePath + "/api/v1/apps/{id}"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

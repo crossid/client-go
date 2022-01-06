@@ -5,7 +5,6 @@ README.md
 api/openapi.yaml
 api_apps.go
 api_jobs.go
-api_o_auth2.go
 api_resource_types.go
 api_resources.go
 api_schemas.go
@@ -20,7 +19,6 @@ docs/JobsApi.md
 docs/List.md
 docs/Meta.md
 docs/ModelError.md
-docs/OAuth2Api.md
 docs/Resource.md
 docs/ResourceList.md
 docs/ResourceListAllOf.md
@@ -33,7 +31,6 @@ docs/ResourceTypesApi.md
 docs/ResourcesApi.md
 docs/SchemasApi.md
 docs/ScimSchema.md
-docs/Token.md
 git_push.sh
 go.mod
 go.sum
@@ -53,6 +50,5 @@ model_resource_type_list_all_of.go
 model_resource_type_schema_ext.go
 model_resource_type_ui.go
 model_scim_schema.go
-model_token.go
 response.go
 utils.go

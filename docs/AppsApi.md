@@ -5,7 +5,7 @@ All URIs are relative to *https://acme.us.crossid.io/api/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateApp**](AppsApi.md#CreateApp) | **Post** /api/v1/apps | Create a an Application
-[**Deleteapp**](AppsApi.md#Deleteapp) | **Delete** /api/v1/apps | Delete an Application
+[**Deleteapp**](AppsApi.md#Deleteapp) | **Delete** /api/v1/apps/{id} | Delete an Application
 
 
 

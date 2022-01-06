@@ -118,9 +118,8 @@ All URIs are relative to *https://acme.us.crossid.io/api/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AppsApi* | [**CreateApp**](docs/AppsApi.md#createapp) | **Post** /api/v1/apps | Create a an Application
-*AppsApi* | [**Deleteapp**](docs/AppsApi.md#deleteapp) | **Delete** /api/v1/apps | Delete an Application
+*AppsApi* | [**Deleteapp**](docs/AppsApi.md#deleteapp) | **Delete** /api/v1/apps/{id} | Delete an Application
 *JobsApi* | [**GetJob**](docs/JobsApi.md#getjob) | **Get** /api/v1/jobs/{id} | Retrieve a Job.
-*OAuth2Api* | [**Oauth2Token**](docs/OAuth2Api.md#oauth2token) | **Post** /oauth2/token | Request a token from the OAuth2 authorization server.
 *ResourceTypesApi* | [**CreateResourceType**](docs/ResourceTypesApi.md#createresourcetype) | **Post** /api/v1/resource-types | Create a new Resource Type
 *ResourceTypesApi* | [**GetResourceType**](docs/ResourceTypesApi.md#getresourcetype) | **Get** /api/v1/resource-types/{id} | Retrieve an existing Resource Type.
 *ResourceTypesApi* | [**ListResourceTypes**](docs/ResourceTypesApi.md#listresourcetypes) | **Get** /api/v1/resource-types | List existing Resource Types.
@@ -150,7 +149,6 @@ Class | Method | HTTP request | Description
  - [ResourceTypeSchemaExt](docs/ResourceTypeSchemaExt.md)
  - [ResourceTypeUi](docs/ResourceTypeUi.md)
  - [ScimSchema](docs/ScimSchema.md)
- - [Token](docs/Token.md)
 
 
 ## Documentation For Authorization
